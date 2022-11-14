@@ -17,10 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/index', function () {
+    return view('welcome');
+});
+
 Route::get('/signin', function () {
     return view('signin');
 });
 
 Route::get('/signup', function () {
     return view('signup');
+});
+
+Route::get('/entity', function () {
+    return view('entity');
 });
