@@ -9,7 +9,7 @@
                         {{ $slot}}
                     </h1>
                     <p
-                        class="mx-auto mb-10 max-w-[600px] text-base text-white text-opacity-50 sm:text-lg sm:leading-relaxed md:text-xl md:leading-relaxed">
+                        class="mx-auto mb-10 max-w-[600px] text-base text-white text-opacity-70 sm:text-lg sm:leading-relaxed md:text-xl md:leading-relaxed">
                         {{ $subtitle }}
                     </p>
                 </div>
