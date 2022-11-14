@@ -16,11 +16,11 @@
 
     // === logo change
     if (ud_header.classList.contains("sticky")) {
-      logoWhite.style = "display: none";
-      logo.style = " ";
+      logoWhite.style.display = "none";
+      logo.style.display = "block";
     } else {
-      logo.style = "display: none";
-      logoWhite.style = " ";
+      logo.style.display = "none";
+      logoWhite.style.display = "block";
     }
 
     // show or hide the back-top-top button

@@ -10,7 +10,7 @@
                         Your Own 3X3 Basketball League Managment
                     </h1>
                     <p
-                        class="mx-auto mb-10 max-w-[600px] text-base text-white text-opacity-50 sm:text-lg sm:leading-relaxed md:text-xl md:leading-relaxed">
+                        class="mx-auto mb-10 max-w-[600px] text-base text-white text-opacity-90 sm:text-lg sm:leading-relaxed md:text-xl md:leading-relaxed">
                         Design your own 3X3 basketball championship. Manage teams and players and always keep match
                         results up to date. </p>
                     <ul class="mb-10 flex flex-wrap items-center justify-center">
