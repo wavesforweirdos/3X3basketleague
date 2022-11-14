@@ -4,23 +4,20 @@ namespace App\View\Components\Forms;
 
 use Illuminate\View\Component;
 
-class Input extends Component
+class Checkbox extends Component
 {
+    public $legend;
     public $id;
-    public $type;
-    public $placeholder;
-    public $pattern;
+    
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $type, $placeholder = NULL, $pattern = NULL)
+    public function __construct($legend, $id)
     {
+        $this->legend = $legend;
         $this->id = $id;
-        $this->type = $type;
-        $this->placeholder = $placeholder;
-        $this->pattern = $pattern;
     }
 
     /**
@@ -30,6 +27,6 @@ class Input extends Component
      */
     public function render()
     {
-        return view('components.forms.input');
+        return view('components.forms.checkbox');
     }
 }
