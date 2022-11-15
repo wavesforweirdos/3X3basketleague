@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('directions', function (Blueprint $table) {
+        Schema::create('referee', function (Blueprint $table) {
             $table->id();
-            $table->string('calle');
-            $table->tinyint('num');
-            $table->tinyint('piso')->nullable();
-            $table->tinyint('puerta')->nullable();
-            $table->tinyint('cp');
-            $table->string('ciudad');
+            $table->string('first_name');
+            $table->string('last_name');
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('directions');
+        Schema::dropIfExists('referees');
     }
 };

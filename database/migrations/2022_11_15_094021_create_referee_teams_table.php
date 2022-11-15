@@ -13,19 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coaches', function (Blueprint $table) {
+        Schema::create('referee_teams', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellidos');
-            $table->string('photo');
-            $table->string('licencia');
-            $table->tinyint('nivel')->nullable();
-            $table->foreignId('directions_id')
-                ->constrained('directions')
+            $table->foreignId('id_referee_principal')
+                ->constrained('referee')
                 ->OnDelete('cascade')
                 ->OnUpdate('cascade');
-            $table->foreignId('contacts_id')
-                ->constrained('contacts')
+            $table->foreignId('id__referee_secondary')
+                ->constrained('referee')
                 ->OnDelete('cascade')
                 ->OnUpdate('cascade');
         });
@@ -38,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coaches');
+        Schema::dropIfExists('referee_teams');
     }
 };

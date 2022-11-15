@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DatosContacto extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class DatosContacto extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
-            $table->id(); //Integer Unsigned Increment
-            $table->char('telf',9);
-            $table->string('mail');
-            $table->string('web')->nullable();
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->enum('name', ['senior', 'junior','infantil']);
+            $table->enum('gender', ['f', 'm','mix']);
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *
@@ -28,7 +27,6 @@ class DatosContacto extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('categories');
     }
 };
-

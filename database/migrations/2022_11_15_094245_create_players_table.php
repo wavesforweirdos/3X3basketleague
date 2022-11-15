@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competitions', function (Blueprint $table) {
+        Schema::create('players', function (Blueprint $table) {
             $table->id();
-            $table->enum('sexo', ['f', 'm', 'mix']);
-            $table->string('territorio');
-            $table->tinyint('grupo');
-            $table->foreignId('categories_id')
-                ->constrained('categories')
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->date('birthdate');
+            $table->string('photo')->nullable();
+            $table->foreignId('id_teams')
+                ->constrained('teams')
                 ->OnDelete('cascade')
                 ->OnUpdate('cascade');
         });
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competitions');
+        Schema::dropIfExists('players');
     }
 };

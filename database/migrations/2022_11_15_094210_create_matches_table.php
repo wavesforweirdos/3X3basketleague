@@ -13,26 +13,25 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('referee_teams', function (Blueprint $table) {
+        Schema::create('matches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('anotador_id')
-                ->constrained('referee')
+            $table->foreignId('id_leagues')
+                ->constrained('leagues')
                 ->OnDelete('cascade')
                 ->OnUpdate('cascade');
-            $table->foreignId('cronometrador_id')
-                ->constrained('referee')
+            $table->foreignId('id_teams_local')
+                ->constrained('teams')
                 ->OnDelete('cascade')
                 ->OnUpdate('cascade');
-            $table->foreignId('operador_id')
-                ->constrained('referee')
+            $table->foreignId('id_teams_visiting')
+                ->constrained('teams')
                 ->OnDelete('cascade')
                 ->OnUpdate('cascade');
-            $table->foreignId('referee_principal_id')
-                ->constrained('referee')
-                ->OnDelete('cascade')
-                ->OnUpdate('cascade');
-            $table->foreignId('referee_secundario_id')
-                ->constrained('referee')
+            $table->timestamp('start_time');
+            $table->timestamp('end_time')->nullable();
+            $table->string('score')->nullable();
+            $table->foreignId('referee_teams_id')
+                ->constrained('referee_teams')
                 ->OnDelete('cascade')
                 ->OnUpdate('cascade');
         });
@@ -45,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('referee_teams');
+        Schema::dropIfExists('matches');
     }
 };

@@ -15,12 +15,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->enum('sexo', ['f', 'm', 'mix']);
-            $table->string('nombre');
-            $table->tinyint('edad_min');
-            $table->tinyint('edad_max');
-            $table->tinyint('max_jugadores');
-            $table->tinyint('cant_referees');
+            $table->enum('name', ['senior', 'junior', 'infantil']);
+            $table->enum('gender', ['f', 'm', 'mix']);
         });
     }
 
