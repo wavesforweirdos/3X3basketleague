@@ -23,6 +23,10 @@ return new class extends Migration
                 ->constrained('basket_courts')
                 ->OnDelete('cascade')
                 ->OnUpdate('cascade');
+            $table->foreignId('id_entities')
+                ->constrained('entities')
+                ->OnDelete('cascade')
+                ->OnUpdate('cascade');
         });
     }
 
