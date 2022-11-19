@@ -7,7 +7,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\BasketCourt;
-use App\Models\Club;
 use App\Models\Entity;
 use App\Models\Referee;
 use App\Models\Game;
@@ -26,6 +25,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        User::create([
+            'name' => 'Treblie',
+            'email' => 'treblie@gmail.com',
+            'password' => bcrypt('12345')
+        ]);
 
         User::factory(9)->create();
 
@@ -67,7 +72,6 @@ class DatabaseSeeder extends Seeder
             'gender' => 'mix',
         ]);
 
-        Club::factory(3)->create();
         Referee::factory(6)->create();
         Manager::factory(10)->create();
         BasketCourt::factory(2)->create();

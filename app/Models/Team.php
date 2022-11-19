@@ -28,8 +28,4 @@ class Team extends Model
         return $this->hasOne('App\Models\Category');
     }
     
-    public function club()
-    {
-        return $this->hasOne('App\Models\Club');
-    }
 }
