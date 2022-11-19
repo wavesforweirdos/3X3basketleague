@@ -2,30 +2,29 @@
 <footer class="wow fadeInUp relative z-10 pt-20 bg-black" data-wow-delay=".15s">
     <div class="container">
         <p class="text-base text-[#f3f4fe] text-center mb-4">
-            We create digital experiences for brands and companies by using
-            technology.
+            Creamos experiencias digitales para marcas y empresas deportivas.
         </p>
     </div>
 
     <div class="mt-12 border-t border-opacity-10 border-gray-700 py-8 lg:mt-[60px]">
         <div class="container">
-            <div class="-mx-4 flex flex-wrap">
-                <div class="w-full px-4 py-1 md:w-1/3 lg:w-1/3">
+            <div class="-mx-4 flex justify-center items-center">
+                <div class="w-full px-4 py-1 md:w-1/3 lg:w-2/5">
                     <div class="my-1">
                         <div class="flex flex-row items-center justify-around md:justify-start  text-[#f3f4fe]">
-                            <a href="javascript:void(0)" class="px-3 text-sm hover:text-primary">
-                                Privacy policy
+                            <a href="javascript:void(0)" class="px-2 text-sm hover:text-primary">
+                                Política de Privacidad
                             </a>
-                            <a href="javascript:void(0)" class="px-3 text-sm hover:text-primary">
-                                Legal notice
+                            <a href="javascript:void(0)" class="px-2 text-sm hover:text-primary">
+                                Aviso Legal
                             </a>
-                            <a href="javascript:void(0)" class="px-3 text-sm hover:text-primary">
-                                Terms of service
+                            <a href="javascript:void(0)" class="px-2 text-sm hover:text-primary">
+                                Términos de Servicio
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="w-full px-4 py-1 md:w-1/3 lg:w-1/3">
+                <div class="w-full px-4 py-1 md:w-1/3 lg:w-1/5">
                     <div class="-mx-3 flex justify-center items-center">
                         <a href="javascript:void(0)" class="px-3 text-[#dddddd] hover:text-white">
                             <svg width="10" height="18" viewBox="0 0 10 18" class="fill-current">
@@ -57,10 +56,10 @@
                         </a>
                     </div>
                 </div>
-                <div class="w-full px-4 py-1 md:w-1/3 lg:w-1/3">
+                <div class="w-full px-4 py-1 md:w-1/3 lg:w-2/5">
                     <div class="my-1 flex justify-center md:justify-end">
                         <p class="text-base text-[#f3f4fe]">
-                            Designed and Developed by
+                            Diseñado y Desarrollado por
                             <a href="https://wavesforweirdos.com" rel="nofollow noopner" target="_blank"
                                 class="text-primary hover:underline">
                                 wavesforweirdos

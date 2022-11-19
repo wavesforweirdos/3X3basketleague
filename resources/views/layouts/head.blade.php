@@ -10,6 +10,7 @@
     </title>
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/animate.css') }}" />
+    <link rel="stylesheet" href="{{ Vite::asset('resources/css/tailwind-2.css') }}" />
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/tailwind.css') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
 
@@ -21,3 +22,6 @@
 </head>
 
 <body>
+    @php
+    setlocale(LC_TIME, 'es_ES', 'esp_esp'); 
+    @endphp
