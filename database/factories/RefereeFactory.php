@@ -23,6 +23,7 @@ class RefereeFactory extends Factory
         return [
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
+            'license' => fake()->randomElement(['A','B','C']),
         ];
     }
 }

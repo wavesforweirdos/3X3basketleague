@@ -24,11 +24,6 @@ return new class extends Migration
             ->constrained('leagues')
             ->OnDelete('cascade')
             ->OnUpdate('cascade');
-            $table->foreignId('id_clubs')
-            ->constrained('clubs')
-            ->OnDelete('cascade')
-            ->OnUpdate('cascade')
-            ->nullable();
         });
     }
 
