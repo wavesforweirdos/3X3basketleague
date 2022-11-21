@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Manager extends Model
 {
     use HasFactory;
+    protected $fillable = ['first_name', 'last_name', 'phone', 'state'];
     public $timestamps = false;
 
     //relación uno a uno inversa
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
 }

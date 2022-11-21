@@ -34,7 +34,7 @@ class EntityFactory extends Factory
             'city' => fake()->city(),
             'id_managers' => Manager::all()->random()->id,
             'photo' =>fake()->imageUrl($width=400, $height=400),
-            // 'photo' =>fake()->image('public/storage/entity-profile', 400, 400, null, false)
+            
         ];
     }
 }

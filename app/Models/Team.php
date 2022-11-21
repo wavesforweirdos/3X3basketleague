@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'id_categories', 'id_leagues', 'id_clubs'];
     public $timestamps = false;
 
     //relación uno a muchos inversa

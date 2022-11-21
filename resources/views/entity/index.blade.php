@@ -14,19 +14,21 @@
 @endsection
 
 @section('content')
-    {{-- La información de la entidad se pide una vez se registra un usuario como entidad. 
-        (Los jugadores, arbitros y demás, tendrán sus credenciales facilitadas por la entidad para poder acceder a su aera) --}}
 
     {{-- Entity Info --}}
     <section id="info" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
         <div class="container">
-            <div class="-mx-4 w-full flex flex-wrap gap-5 justify-center items-center">
-                <div class="wow fadeInUp overflow-hidden rounded mb-4" data-wow-delay=".1s">
-                    <img src="{{ $entity->photo }}" alt="image"
-                        class="object-cover object-center max-w-full h-auto rounded-full"
-                        style="background-image:linear-gradient(rgba(244, 155, 56, 0), rgba(244,155, 56, 1))" />
+            <div class="-mx-4 w-full flex flex-wrap gap-12 justify-center items-center">
+                <div class="wow fadeInUp overflow-hidden rounded mb-4 w-1/5" data-wow-delay=".1s">
+                    @if (str_contains($entity->photo, 'https://'))
+                        <img src="{{ $entity->photo }}" alt="image"
+                            class="object-cover object-center h-auto rounded-full" />
+                    @else
+                        <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}" alt="image"
+                            class="object-cover object-center h-auto rounded-full" />
+                    @endif
                 </div>
-                <div class="px-4 flex gap-8">
+                <div class="flex">
                     <div id="info">
                         <h2 class="pb-6 wow fadeInUp text-[26px] font-bold leading-snug text-dark sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug "
                             data-wow-delay=".1s">
@@ -49,18 +51,17 @@
                                     Persona de contacto:
                                 </p>
                                 <p class="wow fadeInUp text-base leading-relaxed text-body-color" data-wow-delay=".1s">
-                                    {{-- {{ $manager }} <br> --}}
                                     {{ $manager->first_name }} {{ $manager->last_name }} <br>
                                     {{ $manager->phone }} <br>
                                     {{ $manager->state }} <br>
                                 </p>
                             </div>
                             <div id="editInfo" class="w-full flex flex-end">
-                                <a href="{{ route('entity.edit', $entity->id) }}"
+                                <a href="{{ route('entity.edit') }}"
                                     class="rounded bg-primary bg-opacity-20 py-2 px-5 text-xs font-medium text-primary text-center hover:bg-opacity-100 hover:text-white md:mr-4 lg:mr-2 xl:mr-4">
                                     Editar
                                 </a>
-                                <a href="{{ route('entity.delete', $entity->id) }}"
+                                <a href=""
                                     class="rounded bg-primary bg-opacity-20 py-2 px-5 text-xs font-medium text-primary text-center hover:bg-opacity-100 hover:text-white md:mr-4 lg:mr-2 xl:mr-4">
                                     Eliminar
                                 </a>
@@ -87,7 +88,8 @@
                             ¿Estás pensando en crear una nueva liga?
                         </h2>
                         <p class="text-lg leading-relaxed text-body-color sm:text-xl sm:leading-relaxed">
-                            ¡Estás en el lugar correcto! Te queda sólo un último paso: rellena un breve cuestionario y ¡a disfrutar!
+                            ¡Estás en el lugar correcto! Te queda sólo un último paso: rellena un breve cuestionario y ¡a
+                            disfrutar!
                         </p>
                         <div class="w-full">
                             <a href="{{ route('league.create', $entity->id) }}"
@@ -232,4 +234,5 @@
     <?php
         }
     ?>
+
 @endsection

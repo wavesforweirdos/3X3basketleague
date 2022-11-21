@@ -31,13 +31,13 @@
                                 </div>
                                 <div class="grid grid-cols-6 gap-6">
 
-                                    <x-forms.input id='first-name' type='text' placeholder='{{ $manager->first_name }}'>
+                                    <x-forms.input id='first-name' type='text' value='{{ $manager->first_name }}'>
                                         Nombre
                                     </x-forms.input>
-                                    <x-forms.input id='last-name' type='text' placeholder='{{ $manager->last_name }}'>
+                                    <x-forms.input id='last-name' type='text' value='{{ $manager->last_name }}'>
                                         Primer apellido
                                     </x-forms.input>
-                                    <x-forms.input id='phone' type='phone' placeholder='{{ $manager->phone }}'>
+                                    <x-forms.input id='phone' type='phone' value='{{ $manager->phone }}'>
                                         Móvil
                                     </x-forms.input>
                                     <x-forms.select id='position'>
@@ -93,27 +93,27 @@
                                         </div>
                                     </div>
 
-                                    <x-forms.input id='entity-name' type='text' placeholder='{{ $entity->name }}'
+                                    <x-forms.input id='entity-name' type='text' value='{{ $entity->name }}'
                                         class='sm:row-span-1'>
                                         Nombre
                                     </x-forms.input>
-                                    <x-forms.input id='foundation-year' type='number' placeholder='{{ $entity->foundation_year }}'>
+                                    <x-forms.input id='foundation-year' type='number' value='{{ $entity->foundation_year }}'>
                                         Año de fundación
                                     </x-forms.input>
-                                    <x-forms.input id='entity-phone' type='tel' placeholder='{{ $entity->phone }}'
+                                    <x-forms.input id='entity-phone' type='tel' value='{{ $entity->phone }}'
                                         pattern="[0-9]{9}">
                                         Móvil o teléfono
                                     </x-forms.input>
-                                    <x-forms.input id='email' type='email' placeholder='{{ $entity->email }}'>
+                                    <x-forms.input id='email' type='email' value='{{ $entity->email }}'>
                                         Correo electrónico
                                     </x-forms.input>
-                                    <x-forms.input id='web' type='url' placeholder='{{ $entity->web }}'>
+                                    <x-forms.input id='web' type='url' value='{{ $entity->web }}'>
                                         Web
                                     </x-forms.input>
-                                    <x-forms.input id='country' type='text' placeholder='{{ $entity->country }}'>
+                                    <x-forms.input id='country' type='text' value='{{ $entity->country }}'>
                                         País
                                     </x-forms.input>
-                                    <x-forms.input id='city' type='text' placeholder='{{ $entity->city }}'>
+                                    <x-forms.input id='city' type='text' value='{{ $entity->city }}'>
                                         Ciudad
                                     </x-forms.input>
                                 </div>
@@ -122,7 +122,7 @@
                     </div>
                 </form>
                 <div id="saveInfo" class="px-4 pb-5 bg-white text-center sm:px-6">
-                    <button type="submit" name="save"
+                    <button action="{{route('entity.edit')}}" type="submit" name="save"
                         class="inline-flex items-center justify-center rounded bg-primary py-4 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
                         Guardar
                     </button>

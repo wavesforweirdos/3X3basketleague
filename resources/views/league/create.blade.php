@@ -20,7 +20,7 @@
     <section class="bg-[#F4F7FF] py-14 lg:py-20 text-gray-600 body-font relative">
         <div class="container mx-auto">
             <div class="mt-10 md:mt-0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
-                <form action="#" method="POST" class="px-10">
+                <form action="{{route('league/create')}}" method="POST" class="px-10">
                     <div class="">
                         <div class="px-2 py-8 sm:p-6">
                             {{-- League Info --}}

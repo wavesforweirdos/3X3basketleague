@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Entity extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'foundation_year', 'phone', 'email', 'web', 'country', 'city', 'id_managers', 'photo'];
     public $timestamps = false;
 
     //relación uno a muchos

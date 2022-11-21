@@ -10,6 +10,7 @@ class Club extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $fillable = ['name'];
 
     //relación uno a uno inversa
     public function team()

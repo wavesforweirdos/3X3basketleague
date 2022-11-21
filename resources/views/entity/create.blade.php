@@ -20,29 +20,28 @@
     <section class="bg-[#F4F7FF] py-14 lg:py-20 text-gray-600 body-font relative">
         <div class="container mx-auto">
             <div class="mt-10 md:mt-0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
-                <form action="#" method="POST" class="px-10">
+                <form action="{{ route('entity.store') }}" method="POST" class="px-10" enctype="multipart/form-data">
+                    @csrf
                     <div class="">
                         <div class="px-2 py-8 sm:p-6">
                             {{-- Tehnical Director Info --}}
                             <div id="directorInfo">
                                 <div class="col-span-6 sm:col-span-3 mt-12">
-                                    <h4 for="first-name" class="block text-md font-medium text-gray-700">President or
-                                        Technical
-                                        Director</h4>
+                                    <h4 for="directorInfo" class="block text-md font-medium text-gray-700">President or Technical Director</h4>
                                     <hr class="mt-1 mb-5">
                                 </div>
                                 <div class="grid grid-cols-6 gap-6">
 
-                                    <x-forms.input id='first-name' type='text' placeholder='Carles'>
+                                    <x-forms.input id='first_name' type='text' placeholder='Carles'>
                                         First Name
                                     </x-forms.input>
-                                    <x-forms.input id='last-name' type='text' placeholder='Esteve Díaz'>
+                                    <x-forms.input id='last_name' type='text' placeholder='Esteve Díaz'>
                                         Last Name
                                     </x-forms.input>
                                     <x-forms.input id='phone' type='phone' placeholder='685279187'>
                                         Mobile
                                     </x-forms.input>
-                                    <x-forms.select id='position'>
+                                    <x-forms.select id='state'>
                                         <x-slot:message>
                                             Position
                                         </x-slot:message>
@@ -63,7 +62,8 @@
                                     <!-- Photo File Input -->
                                     <div x-data="{ photoName: null, photoPreview: null }"
                                         class="col-span-6 ml-2 sm:col-span-3 sm:row-span-3 md:mr-3 flex flex-col items-center justify-center">
-                                        <input type="file" class="hidden" x-ref="photo"
+                                        {{ csrf_field() }}
+                                        <input id="image" name="image" type="file" class="hidden" x-ref="photo"
                                             x-on:change=" photoName = $refs.photo.files[0].name; const reader = new FileReader(); reader.onload = (e) => { photoPreview = e.target.result; }; reader.readAsDataURL($refs.photo.files[0]); ">
 
                                         <label class="block text-sm font-medium text-gray-700 text-center" for="photo">
@@ -94,21 +94,21 @@
                                         </div>
                                     </div>
 
-                                    <x-forms.input id='entity-name' type='text' placeholder='U. B. Llefià'
+                                    <x-forms.input id='entity_name' type='text' placeholder='U. B. Llefià'
                                         class='sm:row-span-1'>
                                         Name
                                     </x-forms.input>
-                                    <x-forms.input id='foundation-year' type='number' placeholder='1978'>
+                                    <x-forms.input id='foundation_year' type='number' placeholder='1978'>
                                         Foundation year
                                     </x-forms.input>
-                                    <x-forms.input id='entity-phone' type='tel' placeholder='685279187'
+                                    <x-forms.input id='entity_phone' type='tel' placeholder='685279187'
                                         pattern="[0-9]{9}">
                                         Mobile
                                     </x-forms.input>
                                     <x-forms.input id='email' type='email' placeholder='info@entity.com'>
                                         Email
                                     </x-forms.input>
-                                    <x-forms.input id='web' type='url' placeholder='www.entity.com'>
+                                    <x-forms.input id='web' type='url' placeholder='http://www.entity.com' value='http://'>
                                         Web
                                     </x-forms.input>
                                     <x-forms.input id='country' type='text' placeholder='Spain'>
@@ -121,13 +121,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="px-4 pb-5 bg-white text-center sm:px-6">
+                        <button type="submit"
+                            class="inline-flex items-center justify-center rounded bg-primary py-4 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
+                            Save
+                        </button>
+                    </div>
                 </form>
-                <div class="px-4 pb-5 bg-white text-center sm:px-6">
-                    <button type="submit"
-                        class="inline-flex items-center justify-center rounded bg-primary py-4 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
-                        Save
-                    </button>
-                </div>
+
             </div>
         </div>
     </section>

@@ -10,7 +10,6 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'gender'];
-
     public $timestamps = false;
 
     //relación uno a uno inversa
