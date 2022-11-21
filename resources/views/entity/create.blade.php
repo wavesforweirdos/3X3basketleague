@@ -27,26 +27,27 @@
                             {{-- Tehnical Director Info --}}
                             <div id="directorInfo">
                                 <div class="col-span-6 sm:col-span-3 mt-12">
-                                    <h4 for="directorInfo" class="block text-md font-medium text-gray-700">President or Technical Director</h4>
+                                    <h4 class="block text-md font-medium text-gray-700">Información de la
+                                        persona de contacto</h4>
                                     <hr class="mt-1 mb-5">
                                 </div>
                                 <div class="grid grid-cols-6 gap-6">
 
                                     <x-forms.input id='first_name' type='text' placeholder='Carles'>
-                                        First Name
+                                        Nombre
                                     </x-forms.input>
-                                    <x-forms.input id='last_name' type='text' placeholder='Esteve Díaz'>
-                                        Last Name
+                                    <x-forms.input id='last_name' type='text' placeholder='Esteve'>
+                                        Primer apellido
                                     </x-forms.input>
-                                    <x-forms.input id='phone' type='phone' placeholder='685279187'>
-                                        Mobile
+                                    <x-forms.input id='phone' type='phone' placeholder='680379541'>
+                                        Móvil
                                     </x-forms.input>
                                     <x-forms.select id='state'>
                                         <x-slot:message>
-                                            Position
+                                            Cargo
                                         </x-slot:message>
-                                        <option value="1">President</option>
-                                        <option value="2">Technical Director</option>
+                                        <option value="1">Presidente</option>
+                                        <option value="2">Director técnico</option>
                                     </x-forms.select>
 
                                 </div>
@@ -54,7 +55,7 @@
                             {{-- Entity Info --}}
                             <div id="EntityInfo">
                                 <div class="col-span-6 sm:col-span-3 mt-12">
-                                    <h4 for="first-name" class="block text-md font-medium text-gray-700">Entity</h4>
+                                    <h4 for="first-name" class="block text-md font-medium text-gray-700">Entidad</h4>
                                     <hr class="mt-1 mb-5">
                                 </div>
                                 <div class="grid grid-cols-6 gap-6 mb-2">
@@ -67,7 +68,7 @@
                                             x-on:change=" photoName = $refs.photo.files[0].name; const reader = new FileReader(); reader.onload = (e) => { photoPreview = e.target.result; }; reader.readAsDataURL($refs.photo.files[0]); ">
 
                                         <label class="block text-sm font-medium text-gray-700 text-center" for="photo">
-                                            Entity Photo
+                                            Logo
                                         </label>
 
                                         <div class="text-center flex flex-col justify-center items-center">
@@ -96,35 +97,38 @@
 
                                     <x-forms.input id='entity_name' type='text' placeholder='U. B. Llefià'
                                         class='sm:row-span-1'>
-                                        Name
+                                        Nombre
                                     </x-forms.input>
                                     <x-forms.input id='foundation_year' type='number' placeholder='1978'>
-                                        Foundation year
+                                        Año de fundación
                                     </x-forms.input>
-                                    <x-forms.input id='entity_phone' type='tel' placeholder='685279187'
-                                        pattern="[0-9]{9}">
-                                        Mobile
+                                    <x-forms.input id='entity_phone' type='tel' placeholder='685279187'>
+                                        Móvil o teléfono
                                     </x-forms.input>
                                     <x-forms.input id='email' type='email' placeholder='info@entity.com'>
-                                        Email
+                                        Correo electrónico
                                     </x-forms.input>
-                                    <x-forms.input id='web' type='url' placeholder='http://www.entity.com' value='http://'>
+                                    <x-forms.input id='web' type='url' placeholder='http://www.entity.com'  >
                                         Web
                                     </x-forms.input>
                                     <x-forms.input id='country' type='text' placeholder='Spain'>
-                                        Country
+                                        País
                                     </x-forms.input>
                                     <x-forms.input id='city' type='text' placeholder='Barcelona'>
-                                        City
+                                        Ciudad
                                     </x-forms.input>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="px-4 pb-5 bg-white text-center sm:px-6">
+                    <div id="saveInfo" class="flex gap-2 justify-center px-4 pb-5 bg-white text-center sm:px-6">
+                        <button action="{{ route('entity') }}"
+                            class="inline-flex items-center justify-center rounded py-3 px-10 text-base font-medium text-primary bg-primary bg-opacity-20 transition duration-300 ease-in-out hover:bg-opacity-80 hover:text-white">
+                            Cancelar
+                        </button>
                         <button type="submit"
-                            class="inline-flex items-center justify-center rounded bg-primary py-4 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
-                            Save
+                            class="inline-flex items-center justify-center rounded bg-primary py-3 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
+                            Guardar
                         </button>
                     </div>
                 </form>

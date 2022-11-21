@@ -20,27 +20,30 @@
     <section class="bg-[#F4F7FF] py-14 lg:py-20 text-gray-600 body-font relative">
         <div class="container mx-auto">
             <div class="mt-10 p-10 md:mt-0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
-                <form action="#" method="POST">
+                <form action="{{ route('entity.update') }}" method="POST">
+                    @csrf
+                    @method('put')
                     <div class="">
                         <div class="px-2 py-8 sm:p-6">
                             {{-- Tehnical Director Info --}}
                             <div id="directorInfo">
                                 <div class="col-span-6 sm:col-span-3 mt-12">
-                                    <h4 for="first-name" class="block text-md font-medium text-gray-700">Información de la persona de contacto</h4>
+                                    <h4 for="first-name" class="block text-md font-medium text-gray-700">Información de la
+                                        persona de contacto</h4>
                                     <hr class="mt-1 mb-5">
                                 </div>
                                 <div class="grid grid-cols-6 gap-6">
 
-                                    <x-forms.input id='first-name' type='text' value='{{ $manager->first_name }}'>
+                                    <x-forms.input id='first_name' type='text' value='{{ $manager->first_name }}'>
                                         Nombre
                                     </x-forms.input>
-                                    <x-forms.input id='last-name' type='text' value='{{ $manager->last_name }}'>
+                                    <x-forms.input id='last_name' type='text' value='{{ $manager->last_name }}'>
                                         Primer apellido
                                     </x-forms.input>
                                     <x-forms.input id='phone' type='phone' value='{{ $manager->phone }}'>
                                         Móvil
                                     </x-forms.input>
-                                    <x-forms.select id='position'>
+                                    <x-forms.select id='state'>
                                         <x-slot:message>
                                             Cargo
                                         </x-slot:message>
@@ -55,7 +58,8 @@
                             {{-- Entity Info --}}
                             <div id="EntityInfo">
                                 <div class="col-span-6 sm:col-span-3 mt-12">
-                                    <h4 for="first-name" class="block text-md font-medium text-gray-700">Información de la entidad</h4>
+                                    <h4 for="first-name" class="block text-md font-medium text-gray-700">Información de la
+                                        entidad</h4>
                                     <hr class="mt-1 mb-5">
                                 </div>
                                 <div class="grid grid-cols-6 gap-6 mb-2">
@@ -93,15 +97,15 @@
                                         </div>
                                     </div>
 
-                                    <x-forms.input id='entity-name' type='text' value='{{ $entity->name }}'
+                                    <x-forms.input id='entity_name' type='text' value='{{ $entity->name }}'
                                         class='sm:row-span-1'>
                                         Nombre
                                     </x-forms.input>
-                                    <x-forms.input id='foundation-year' type='number' value='{{ $entity->foundation_year }}'>
+                                    <x-forms.input id='foundation_year' type='number'
+                                        value='{{ $entity->foundation_year }}'>
                                         Año de fundación
                                     </x-forms.input>
-                                    <x-forms.input id='entity-phone' type='tel' value='{{ $entity->phone }}'
-                                        pattern="[0-9]{9}">
+                                    <x-forms.input id='entity_phone' type='tel' value='{{ $entity->phone }}'>
                                         Móvil o teléfono
                                     </x-forms.input>
                                     <x-forms.input id='email' type='email' value='{{ $entity->email }}'>
@@ -120,13 +124,17 @@
                             </div>
                         </div>
                     </div>
+                    <div id="saveInfo" class="flex gap-2 justify-center px-4 pb-5 bg-white text-center sm:px-6">
+                        <button action="{{ route('entity') }}"
+                            class="inline-flex items-center justify-center rounded py-3 px-10 text-base font-medium text-primary bg-primary bg-opacity-20 transition duration-300 ease-in-out hover:bg-opacity-80 hover:text-white">
+                            Cancelar
+                        </button>
+                        <button type="submit"
+                            class="inline-flex items-center justify-center rounded bg-primary py-3 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
+                            Guardar
+                        </button>
+                    </div>
                 </form>
-                <div id="saveInfo" class="px-4 pb-5 bg-white text-center sm:px-6">
-                    <button action="{{route('entity.edit')}}" type="submit" name="save"
-                        class="inline-flex items-center justify-center rounded bg-primary py-4 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
-                        Guardar
-                    </button>
-                </div>
             </div>
         </div>
     </section>
