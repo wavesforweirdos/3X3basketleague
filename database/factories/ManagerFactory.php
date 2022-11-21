@@ -23,7 +23,7 @@ class ManagerFactory extends Factory
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
             'phone' => fake()->phoneNumber(),
-            'state' => fake()->randomElement(['president', 'technical director']),
+            'state' => fake()->randomElement(['Presidente', 'Director técnico']),
         ];
     }
 }

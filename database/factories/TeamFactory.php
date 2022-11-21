@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Team;
 use App\Models\Category;
-use App\Models\Club;
 use App\Models\League;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -27,7 +26,6 @@ class TeamFactory extends Factory
             'name' => fake()->name(),
             'id_categories' => Category::all()->random()->id,
             'id_leagues' => League::all()->random()->id,
-            'id_clubs' => Club::all()->random()->id,
         ];
     }
 }

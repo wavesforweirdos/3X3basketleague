@@ -25,16 +25,15 @@ class EntityFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->word(2),
             'foundation_year' => fake()->year(),
             'phone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
-            'web' => fake()->url(),
+            'web' => 'www.'. fake()->word(4) .'.com',
             'country' => fake()->country(),
             'city' => fake()->city(),
             'id_managers' => Manager::all()->random()->id,
-            'photo' =>fake()->imageUrl($width=400, $height=400),
-            
+            'photo' =>fake()->imageUrl(200, 200),
         ];
     }
 }
