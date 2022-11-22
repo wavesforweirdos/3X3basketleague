@@ -18,8 +18,8 @@
     {{-- Entity Info --}}
     <section id="info" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
         <div class="container">
-            <div class="-mx-4 w-full flex flex-wrap gap-12 justify-center items-center">
-                <div class="wow fadeInUp overflow-hidden rounded mb-4 w-1/5" data-wow-delay=".1s">
+            <div class="-mx-4 w-full flex flex-wrap gap-6 justify-center items-center">
+                <div class="wow fadeInUp overflow-hidden rounded mb-4 w-1/4" data-wow-delay=".1s">
                     @if (str_contains($entity->photo, 'https://'))
                         <img src="{{ $entity->photo }}" alt="image"
                             class="object-cover object-center h-auto rounded-full" />
@@ -32,7 +32,7 @@
                     <div id="info">
                         <h2 class="pb-6 wow fadeInUp text-[26px] font-bold leading-snug text-dark sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug "
                             data-wow-delay=".1s">
-                            {{ $entity->name }} <span class="text-primary font-medium text-3xl text-opacity-30">|
+                            {{ $entity->entity_name }} <span class="text-primary font-medium text-3xl text-opacity-30">|
                                 {{ $entity->foundation_year }} {{ $entity->country }}</span>
                         </h2>
                         <div class="flex gap-4 flex-col">
@@ -120,7 +120,7 @@
                             Competiciones creadas
                         </h2>
                         <p class="text-lg leading-relaxed text-body-color sm:text-xl sm:leading-relaxed">
-                            En esta sección encontrarás todas las ligas gestionadas por {{ $entity->name }}
+                            En esta sección encontrarás todas las ligas gestionadas por {{ $entity->entity_name }}
                         </p>
                     </div>
                 </div>

@@ -33,20 +33,29 @@
                                 </div>
                                 <div class="grid grid-cols-6 gap-6">
 
-                                    <x-forms.input id='first_name' type='text' placeholder='Carles'>
+                                    <x-forms.input id='first_name' type='text' placeholder='Carles' value='{{old("first_name")}}'>
                                         Nombre
+                                        @error('first_name')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='last_name' type='text' placeholder='Esteve'>
+                                    <x-forms.input id='last_name' type='text' placeholder='Esteve' value='{{old("last_name")}}'>
                                         Primer apellido
+                                        @error('last_name')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='phone' type='phone' placeholder='680379541'>
+                                    <x-forms.input id='phone' type='phone' placeholder='680379541' value='{{old("phone")}}'>
                                         Móvil
+                                        @error('phone')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
                                     <x-forms.select id='state'>
                                         <x-slot:message>
                                             Cargo
                                         </x-slot:message>
-                                        <option value="1">Presidente</option>
+                                        <option value="1" selected>Presidente</option>
                                         <option value="2">Director técnico</option>
                                     </x-forms.select>
 
@@ -74,7 +83,7 @@
                                         <div class="text-center flex flex-col justify-center items-center">
                                             <!-- Current Profile Photo -->
                                             <div class="mt-2 " x-show="! photoPreview">
-                                                <img src="https://images.unsplash.com/photo-1531316282956-d38457be0993?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"
+                                                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
                                                     class="w-20 h-20 rounded-full shadow">
                                             </div>
                                             <!-- New Profile Photo Preview -->
@@ -95,27 +104,44 @@
                                         </div>
                                     </div>
 
-                                    <x-forms.input id='entity_name' type='text' placeholder='U. B. Llefià'
+                                    <x-forms.input id='entity_name' type='text' placeholder='U. B. Llefià'  value='{{old("entity_name")}}'
                                         class='sm:row-span-1'>
                                         Nombre
+                                        @error('entity_name')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='foundation_year' type='number' placeholder='1978'>
+                                    <x-forms.input id='foundation_year' type='number' placeholder='1978'  value='{{old("foundation_year")}}'>
                                         Año de fundación
+                                        @error('foundation_year')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='entity_phone' type='tel' placeholder='685279187'>
+                                    <x-forms.input id='entity_phone' type='tel' placeholder='685279187' value='{{old("entity_phone")}}'>
                                         Móvil o teléfono
+                                        @error('entity_phone')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='email' type='email' placeholder='info@entity.com'>
+                                    <x-forms.input id='email' type='email' placeholder='info@entity.com' value='{{old("email")}}'>
                                         Correo electrónico
+                                        @error('email')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='web' type='url' placeholder='http://www.entity.com'  >
+                                    <x-forms.input id='web' type='text' placeholder='http://www.entity.com'>
                                         Web
                                     </x-forms.input>
-                                    <x-forms.input id='country' type='text' placeholder='Spain'>
+                                    <x-forms.input id='country' type='text' placeholder='Spain' value='{{old("country")}}'>
                                         País
+                                        @error('country')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='city' type='text' placeholder='Barcelona'>
-                                        Ciudad
+                                    <x-forms.input id='city' type='text' placeholder='Barcelona' value='{{old("city")}}'>
+                                        Ciudad @error('city')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
                                 </div>
                             </div>

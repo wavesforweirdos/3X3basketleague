@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Entity extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'foundation_year', 'phone', 'email', 'web', 'country', 'city', 'id_managers', 'photo'];
+    protected $fillable = ['entity_name', 'foundation_year', 'phone', 'email', 'web', 'country', 'city', 'id_managers', 'photo'];
     public $timestamps = false;
 
     //relación uno a muchos
@@ -24,7 +24,7 @@ class Entity extends Model
         return $this->hasOne('App\Models\Manager');
     }
 
-    protected function name(): Attribute
+    protected function entity_name(): Attribute
     {
         return new Attribute(
             get: function ($value) {

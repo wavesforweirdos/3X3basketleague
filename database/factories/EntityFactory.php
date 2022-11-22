@@ -25,7 +25,7 @@ class EntityFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->word(2),
+            'entity_name' => fake()->word(2),
             'foundation_year' => fake()->year(),
             'phone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),

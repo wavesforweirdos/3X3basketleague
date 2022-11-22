@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BasketCourt;
+use App\Http\Requests\StoreEntity;
 use App\Models\Entity;
 use App\Models\Manager;
 use App\Models\League;
@@ -36,74 +36,48 @@ class EntityController extends Controller
         return view('entity.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreEntity $request)
     {
-
-        $manager = new Manager();
-
-        $manager->first_name = $request->first_name;
-        $manager->last_name = $request->last_name;
-        $manager->phone = $request->phone;
-        $manager->state = $request->state;
-        $manager->save();
-
-        $entity = new Entity();
-
-        $entity->name = $request->entity_name;
-        $entity->foundation_year = $request->foundation_year;
-        $entity->phone = $request->entity_phone;
-        $entity->email = $request->email;
-        $entity->web = $request->web;
-        $entity->country = $request->country;
-        $entity->city = $request->city;
-        $entity->id_managers = $manager->id;
-
+        $manager = Manager::create($request->all());
+        $request['id_managers'] = $manager->id;
         if ($request->hasFile('image')) {
             $destination_path = 'public/images/entities';
             $image = $request->file('image');
-            $image_name = $entity->name . '_profile.' . $image->extension();
-            $path = $request->file('image')->storeAs($destination_path, $image_name,);
-
-            $entity->photo = $image_name;
+            $image_name = $request['entity_name'] . '_profile.' . $image->extension();
+            $path = $request->file('image')->storeAs($destination_path, strtolower($image_name));
+            
+            $request['photo'] = $image_name;
         }
-        $entity->save();
-
+        $entity = Entity::create($request->all());
         $leagues =  League::select("*")->where('id_entities', '=', $entity->id)->get()->sortByDesc('id');
 
         return redirect()->route('entity', compact('entity', 'manager', 'leagues'));
     }
 
-    public function edit()
+    public function edit($entity)
     {
-        $entity = $this->entity;
-        $manager = $this->manager;
+        $id_manager = $this->entity->id_managers;
+        $manager = Manager::find($id_manager);
         return view('entity.edit', compact('entity', 'manager'));
     }
-
-    public function update(Request $request)
+    
+    public function update(StoreEntity $request, $entity)
     {
-        $entity = $this->entity;
-        $manager = $this->manager;
+        $id_manager = $this->entity->id_managers;
+        $manager = Manager::find($id_manager);
 
-        $manager->first_name = $request->first_name;
-        $manager->last_name = $request->last_name;
-        $manager->phone = $request->phone;
-        $manager->state = $request->state;
-        $manager->save();
-
-        $entity->name = $request->entity_name;
-        $entity->foundation_year = $request->foundation_year;
-        $entity->phone = $request->entity_phone;
-        $entity->email = $request->email;
-        $entity->web = $request->web;
-        $entity->country = $request->country;
-        $entity->city = $request->city;
-        $entity->id_managers = $manager->id;
-
-        $entity->save();
-
+        $manager->update($request->all());
+        $request['id_managers'] = $manager->id;
+        if ($request->hasFile('image')) {
+            $destination_path = 'public/images/entities';
+            $image = $request->file('image');
+            $image_name = $request['entity_name'] . '_profile.' . $image->extension();
+            $path = $request->file('image')->storeAs($destination_path, strtolower($image_name));
+            
+            $request['photo'] = $image_name;
+        }
+        $entity->update($request->all());
         $leagues =  League::select("*")->where('id_entities', '=', $entity->id)->get()->sortByDesc('id');
-
 
         return redirect()->route('entity', compact('entity', 'manager', 'leagues'));
     }
