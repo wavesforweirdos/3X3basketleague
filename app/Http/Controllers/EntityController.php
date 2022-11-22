@@ -60,8 +60,8 @@ class EntityController extends Controller
         $manager = Manager::find($id_manager);
         return view('entity.edit', compact('entity', 'manager'));
     }
-    
-    public function update(StoreEntity $request, $entity)
+
+    public function update(StoreEntity $request, Entity $entity)
     {
         $id_manager = $this->entity->id_managers;
         $manager = Manager::find($id_manager);
@@ -73,12 +73,18 @@ class EntityController extends Controller
             $image = $request->file('image');
             $image_name = $request['entity_name'] . '_profile.' . $image->extension();
             $path = $request->file('image')->storeAs($destination_path, strtolower($image_name));
-            
+
             $request['photo'] = $image_name;
         }
         $entity->update($request->all());
         $leagues =  League::select("*")->where('id_entities', '=', $entity->id)->get()->sortByDesc('id');
 
         return redirect()->route('entity', compact('entity', 'manager', 'leagues'));
+    }
+
+    public function destroy(Entity $entity)
+    {
+        $entity->delete();
+        return redirect()->route('entity');
     }
 }
