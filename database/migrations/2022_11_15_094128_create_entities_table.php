@@ -22,10 +22,7 @@ return new class extends Migration
             $table->string('web')->nullable();
             $table->string('country');
             $table->string('city');
-            $table->foreignId('id_managers')
-            ->constrained('managers')
-            ->OnDelete('cascade')
-            ->OnUpdate('cascade');
+            $table->foreignId('id_managers')->constrained('managers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

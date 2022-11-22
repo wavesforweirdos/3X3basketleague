@@ -29,6 +29,7 @@ Route::get('/entity/create', [EntityController::class, 'create'])->name('entity.
 Route::post('/entity/store', [EntityController::class, 'store'])->name('entity.store');
 Route::get('/entity/edit/', [EntityController::class, 'edit'])->name('entity.edit');
 Route::put('/entity/update/', [EntityController::class, 'update'])->name('entity.update');
+Route::delete('/entity/{entity}', [EntityController::class, 'destroy'])->name('entity.destroy');
 
 // --------- Rutas de League ----------
 Route::get('/league/create/', [EntityController::class, 'create'])->name('league.create');

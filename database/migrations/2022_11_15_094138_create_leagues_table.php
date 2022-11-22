@@ -23,14 +23,8 @@ return new class extends Migration
             $table->date('start_day');
             $table->date('end_day')->nullable();
             $table->date('registration_day');
-            $table->foreignId('id_basket_courts')
-                ->constrained('basket_courts')
-                ->OnDelete('cascade')
-                ->OnUpdate('cascade');
-            $table->foreignId('id_entities')
-                ->constrained('entities')
-                ->OnDelete('cascade')
-                ->OnUpdate('cascade');
+            $table->foreignId('id_basket_courts')->constrained('basket_courts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('id_entities')->constrained('entities')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

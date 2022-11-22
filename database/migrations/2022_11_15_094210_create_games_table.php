@@ -30,10 +30,7 @@ return new class extends Migration
             $table->timestamp('start_time');
             $table->timestamp('end_time')->nullable();
             $table->string('score')->nullable();
-            $table->foreignId('referees_id')
-                ->constrained('referees')
-                ->OnDelete('cascade')
-                ->OnUpdate('cascade');
+            $table->foreignId('referees_id')->constrained('referees')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
