@@ -28,7 +28,7 @@
                         </h3>
                         <ul class="flex flex-wrap justify-center">
                             <li>
-                                <a href="index"
+                                <a href="/"
                                     class="mx-2 my-1 inline-block rounded-md bg-[#f5f8ff] py-3 px-6 text-base font-medium text-dark hover:bg-primary hover:text-white">
                                     Inicio
                                 </a>

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('leagues', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            // $table->string('slug');
             $table->string('logo')->nullable();
             $table->tinyInteger('min_age');
             $table->tinyInteger('max_players');

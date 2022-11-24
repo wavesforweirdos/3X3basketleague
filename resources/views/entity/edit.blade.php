@@ -2,7 +2,7 @@
 
 @section('title', 'Editar entidad | 3KLeague')
 @section('navigation')
-    @include('layouts.nav-home')
+    @include('layouts.nav-entity')
 @endsection
 
 @section('banner')
@@ -20,7 +20,7 @@
     <section class="bg-[#F4F7FF] py-14 lg:py-20 text-gray-600 body-font relative">
         <div class="container mx-auto">
             <div class="mt-10 p-10 md:mt-0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
-                <form action="{{ route('entity.update') }}" method="POST">
+                <form action="{{ route('entity.update' , $entity) }}" method="POST">
                     @csrf
                     @method('put')
                     <div class="">
@@ -93,8 +93,7 @@
                                                 <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}" alt="image"
                                                 class="w-20 h-20 rounded-full shadow" />
                                             @endif
-{{-- 
-                                                <img src="{{ $entity->photo }}" class="w-20 h-20 rounded-full shadow"> --}}
+                                            {{-- <img src="{{ $entity->photo }}" class="w-20 h-20 rounded-full shadow"> --}}
                                             </div>
                                             <!-- New Profile Photo Preview -->
                                             <div class="mt-2" x-show="photoPreview" style="display: none;">
@@ -160,10 +159,10 @@
                         </div>
                     </div>
                     <div id="saveInfo" class="flex gap-2 justify-center px-4 pb-5 bg-white text-center sm:px-6">
-                        <button action="{{ route('entity') }}"
+                        {{-- <button action="{{ route('entity.show' , $entity) }}"
                             class="inline-flex items-center justify-center rounded py-3 px-10 text-base font-medium text-primary bg-primary bg-opacity-20 transition duration-300 ease-in-out hover:bg-opacity-80 hover:text-white">
                             Cancelar
-                        </button>
+                        </button> --}}
                         <button type="submit"
                             class="inline-flex items-center justify-center rounded bg-primary py-3 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
                             Guardar

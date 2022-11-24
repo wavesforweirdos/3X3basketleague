@@ -5,8 +5,7 @@ namespace Database\Factories;
 use App\Models\Entity;
 use App\Models\Manager;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 /**
@@ -24,16 +23,18 @@ class EntityFactory extends Factory
 
     public function definition()
     {
+        $name = fake()->word(2);
         return [
-            'entity_name' => fake()->word(2),
+            'entity_name' => $name,
+            // 'slug' => Str::slug($name, '-'),
             'foundation_year' => fake()->year(),
             'phone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
-            'web' => 'www.'. fake()->word(4) .'.com',
+            'web' => 'www.' . $name . '.com',
             'country' => fake()->country(),
             'city' => fake()->city(),
             'id_managers' => Manager::all()->random()->id,
-            'photo' =>fake()->imageUrl(200, 200),
+            'photo' => fake()->imageUrl(200, 200),
         ];
     }
 }

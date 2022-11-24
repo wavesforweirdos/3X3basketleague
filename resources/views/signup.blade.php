@@ -23,7 +23,7 @@
                     <div class="wow fadeInUp relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-14 px-8 text-center sm:px-12 md:px-[60px]"
                         data-wow-delay=".15s">
                         <div class="w-60 max-w-full px-4 mx-auto pb-8">
-                            <a href="index.html" class="navbar-logo block w-full py-5">
+                            <a href="/" class="navbar-logo block w-full py-5">
                                 <img src="{{ Vite::asset('resources/images/logo/logo.svg') }}" alt="logo"
                                     class="w-full" />
                             </a>

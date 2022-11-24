@@ -74,11 +74,11 @@ class DatabaseSeeder extends Seeder
 
         Referee::factory(6)->create();
         Manager::factory(10)->create();
-        BasketCourt::factory(2)->create();
-        Entity::factory(2)->create();
-        League::factory(3)->create();
+        BasketCourt::factory(5)->create();
+        Entity::factory(5)->create();
+        League::factory(10)->create();
         Team::factory(24)->create();
-        Game::factory(12)->create();
+        Game::factory(50)->create();
         Player::factory(100)->create();
     }
 }

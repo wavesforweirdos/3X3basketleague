@@ -24,7 +24,7 @@ class Entity extends Model
         return $this->hasOne('App\Models\Manager');
     }
 
-    protected function entity_name(): Attribute
+    protected function entityName(): Attribute
     {
         return new Attribute(
             get: function ($value) {

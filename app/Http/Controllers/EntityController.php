@@ -10,25 +10,11 @@ use Illuminate\Http\Request;
 
 class EntityController extends Controller
 {
-    protected $entity;
-    protected $manager;
-    protected $leagues;
-
-    public function __construct()
-    {
-        $this->entity = Entity::all()->random();
-        $id_manager = $this->entity->id_managers;
-        $this->manager = Manager::find($id_manager);
-        $this->leagues = League::select("*")->where('id_entities', '=', $this->entity->id)->get()->sortByDesc('id');
-    }
 
     public function index()
     {
-        $entity = $this->entity;
-        $manager = $this->manager;
-        $leagues = $this->leagues;
-
-        return view('entity.index', compact('entity', 'manager', 'leagues'));
+        $entities = Entity::paginate(4);
+        return view('welcome', compact('entities'));
     }
 
     public function create()
@@ -36,6 +22,15 @@ class EntityController extends Controller
         return view('entity.create');
     }
 
+    public function show(Entity $entity)
+    {
+        $id_manager = $entity->id_managers;
+        $manager = Manager::find($id_manager);
+        $leagues = League::select("*")->where('id_entities', '=', $entity->id)->get()->sortByDesc('start_day');
+
+        return view('entity.show', compact('entity', 'manager', 'leagues'));
+    }
+  
     public function store(StoreEntity $request)
     {
         $manager = Manager::create($request->all());
@@ -49,21 +44,19 @@ class EntityController extends Controller
             $request['photo'] = $image_name;
         }
         $entity = Entity::create($request->all());
-        $leagues =  League::select("*")->where('id_entities', '=', $entity->id)->get()->sortByDesc('id');
-
-        return redirect()->route('entity', compact('entity', 'manager', 'leagues'));
+        return redirect()->route('entity.show', $entity);
     }
 
-    public function edit($entity)
+    public function edit(Entity $entity)
     {
-        $id_manager = $this->entity->id_managers;
+        $id_manager = $entity->id_managers;
         $manager = Manager::find($id_manager);
         return view('entity.edit', compact('entity', 'manager'));
     }
 
     public function update(StoreEntity $request, Entity $entity)
     {
-        $id_manager = $this->entity->id_managers;
+        $id_manager = $entity->id_managers;
         $manager = Manager::find($id_manager);
 
         $manager->update($request->all());
@@ -77,14 +70,13 @@ class EntityController extends Controller
             $request['photo'] = $image_name;
         }
         $entity->update($request->all());
-        $leagues =  League::select("*")->where('id_entities', '=', $entity->id)->get()->sortByDesc('id');
 
-        return redirect()->route('entity', compact('entity', 'manager', 'leagues'));
+        return redirect()->route('entity.show', $entity);
     }
 
     public function destroy(Entity $entity)
     {
         $entity->delete();
-        return redirect()->route('entity');
+        return redirect()->route('entity.index');
     }
 }

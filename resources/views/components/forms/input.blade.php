@@ -3,5 +3,5 @@
     </label>
     <input type="{{ $type }}" name="{{ $id }}" placeholder="{{ $placeholder }}" id="{{ $id }}"
         value="{{ $value }}" autocomplete min="{{ $min ?? '' }}"
-        class="w-full bg-[#FCFDFE] py-1 px-2 text-md placeholder-[#ACB6BE] outline-none transition mt-1block shadow-sm sm:text-sm rounded-md  border border-[#E9EDF4] focus:border-primary focus-visible:shadow-none  focus:ring-primary ">
+        class="w-full bg-[#FCFDFE] mt-1 py-1 px-2 text-md placeholder-[#ACB6BE] outline-none transition mt-1block shadow-sm sm:text-sm rounded-md  border border-[#E9EDF4] focus:border-primary focus-visible:shadow-none  focus:ring-primary ">
 </div>

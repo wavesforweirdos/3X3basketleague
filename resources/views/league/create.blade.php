@@ -20,37 +20,50 @@
     <section class="bg-[#F4F7FF] py-14 lg:py-20 text-gray-600 body-font relative">
         <div class="container mx-auto">
             <div class="mt-10 md:mt-0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
-                <form action="{{route('league/create')}}" method="POST" class="px-10">
+                <form action="" method="POST" class="px-10">
+                    @csrf
                     <div class="">
                         <div class="px-2 py-8 sm:p-6">
+                            <h1 class="text-xl text-center font-bold leading-snug sm:text-xl sm:leading-snug md:text-[45px] md:leading-snug">
+                                {{ $entity->entity_name }}
+                            </h1>
                             {{-- League Info --}}
                             <div id="LeagueInfo">
                                 <div class="col-span-6 sm:col-span-3 mt-12">
-                                    <h4 for="first-name" class="block text-md font-medium text-gray-700">League</h4>
+                                    <h4 class="block text-md font-medium text-gray-700">Liga</h4>
                                     <hr class="mt-1 mb-5">
                                 </div>
                                 <div class="grid grid-cols-6 gap-6 mb-2">
-                                    <x-forms.input id='league-name' type='text' placeholder='3X3 LLEFIÀ'
-                                        class='sm:row-span-1'>
-                                        Name
+                                    <x-forms.input id='league_name' type='text' placeholder='3X3 LLEFIÀ'
+                                        class='sm:row-span-1' value='{{old("league_name")}}'>
+                                        Nombre
+                                        @error('league_name')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
                                     <x-forms.input id='age' type='number' placeholder='16' min='0'
                                         class='sm:row-span-1'>
-                                        Minimum age
+                                        Edad mínima de los participantes
+                                        @error('age')
+                                        <small class="text-primary">*{{ $message }}</small>
+                                    @enderror
                                     </x-forms.input>
                                     <x-forms.input id='players' type='number' placeholder='16' min='3'
-                                        class='sm:row-span-1'>
-                                        Maxim players
+                                        class='sm:row-span-1' value='{{old("players")}}'>
+                                        Máximo de jugadores por equipo
+                                        @error('players')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
                                     <div class="col-span-6 sm:col-span-3">
                                         <fieldset>
-                                            <legend class="block text-sm font-medium text-gray-700">Team gender
+                                            <legend id="gender" class="block text-sm font-medium text-gray-700">Team gender
                                             </legend>
                                             <div
                                                 class="col-span-6 sm:col-span-3 py-1 px-2 flex flex-row gap-2 align-middle">
-                                                <x-forms.checkbox id='f' legend='Female'> </x-forms.checkbox>
-                                                <x-forms.checkbox id='m' legend='Mascle'> </x-forms.checkbox>
-                                                <x-forms.checkbox id='mix' legend='Mix'> </x-forms.checkbox>
+                                                <x-forms.checkbox id='f' legend='Femenino'> </x-forms.checkbox>
+                                                <x-forms.checkbox id='m' legend='Masculinp'> </x-forms.checkbox>
+                                                <x-forms.checkbox id='mix' legend='Mixto'> </x-forms.checkbox>
                                             </div>
                                         </fieldset>
                                     </div>
@@ -61,18 +74,30 @@
                                     <hr class="mb-4">
                                 </div>
                                 <div class="px-4 grid grid-cols-6 gap-6 mb-2">
-                                    <x-forms.input id='court-street' type='text'
-                                        placeholder='Avinguda del Doctor Bassols' class='sm:row-span-1'>
-                                        Street
+                                    <x-forms.input id='court_street' type='text'
+                                        placeholder='Avinguda del Doctor Bassols' class='sm:row-span-1' value='{{old("court_street")}}'>
+                                        Calle
+                                        @error('court_street')
+                                        <small class="text-primary">*{{ $message }}</small>
+                                    @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='court-num' type='number' placeholder='10'>
-                                        Street number
+                                    <x-forms.input id='court_num' type='number' placeholder='10' value='{{old("court_num")}}'>
+                                        Número
+                                        @error('court_num')
+                                        <small class="text-primary">*{{ $message }}</small>
+                                    @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='court-zipcode' type='number' placeholder='08911'>
-                                        Zip Code
+                                    <x-forms.input id='court_zipcode' type='number' placeholder='08911' value='{{old("court_zipcode")}}'>
+                                        Código postal
+                                        @error('court_zipcode')
+                                        <small class="text-primary">*{{ $message }}</small>
+                                    @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='court-city' type='text' placeholder='Badalona'>
-                                        City
+                                    <x-forms.input id='court_city' type='text' placeholder='Badalona' value='{{old("court_city")}}'>
+                                        Ciudad
+                                        @error('court_city')
+                                        <small class="text-primary">*{{ $message }}</small>
+                                    @enderror
                                     </x-forms.input>
                                 </div>
                             </div>
@@ -80,10 +105,14 @@
 
                     </div>
                 </form>
-                <div class="px-4 pb-5 bg-white text-center sm:px-6">
+                <div id="saveInfo" class="flex gap-2 justify-center p-6 bg-white text-center sm:px-6">
+                    <button action="{{ route('league') }}"
+                        class="inline-flex items-center justify-center rounded py-3 px-10 text-base font-medium text-primary bg-primary bg-opacity-20 transition duration-300 ease-in-out hover:bg-opacity-80 hover:text-white">
+                        Cancelar
+                    </button>
                     <button type="submit"
-                        class="inline-flex items-center justify-center rounded bg-primary py-4 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
-                        Save
+                        class="inline-flex items-center justify-center rounded bg-primary py-3 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
+                        Guardar
                     </button>
                 </div>
             </div>

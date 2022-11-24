@@ -12,6 +12,11 @@ class League extends Model
 
     public $timestamps = false;
 
+    // public function getRouteKey() //sobrescribe la existente para escribir las rutas a partir de 'slug'
+    // {
+    //     return 'slug';
+    // }
+
     //relación uno a muchos inversa
     public function entity()
     {

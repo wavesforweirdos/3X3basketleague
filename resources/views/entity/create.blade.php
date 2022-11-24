@@ -2,7 +2,8 @@
 
 @section('title', 'Entity | 3KLeague')
 @section('navigation')
-    @include('layouts.nav-home')
+{{$entity = '';}}
+    @include('layouts.nav-entity')
 @endsection
 
 @section('banner')
@@ -148,10 +149,10 @@
                         </div>
                     </div>
                     <div id="saveInfo" class="flex gap-2 justify-center px-4 pb-5 bg-white text-center sm:px-6">
-                        <button action="{{ route('entity') }}"
+                        {{-- <button action="{{ route('entity.index') }}"
                             class="inline-flex items-center justify-center rounded py-3 px-10 text-base font-medium text-primary bg-primary bg-opacity-20 transition duration-300 ease-in-out hover:bg-opacity-80 hover:text-white">
                             Cancelar
-                        </button>
+                        </button> --}}
                         <button type="submit"
                             class="inline-flex items-center justify-center rounded bg-primary py-3 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
                             Guardar

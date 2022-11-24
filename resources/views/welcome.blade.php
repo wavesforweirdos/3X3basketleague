@@ -168,6 +168,50 @@
     </section>
     <!-- ====== About Section End -->
 
+    <!-- ====== Entities Section Start -->
+    <section id="entities" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+        <div class="container">
+            <div class="-mx-4 flex flex-wrap">
+                <div class="w-full px-4">
+                    <div class="mx-auto mb-[60px] max-w-[620px] text-center">
+                        <h2 class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[42px]">
+                            Entidades que gestionamos
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="-mx-4 flex flex-wrap justify-center">
+                @foreach ($entities as $entity)
+                    <a class="w-full px-4 sm:w-1/2 lg:w-1/4" href="{{ route('entity.show', $entity) }}">
+                        <div class="wow fadeInUp mb-10" data-wow-delay=".1s">
+                            <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
+                                @if (str_contains($entity->photo, 'https://'))
+                                    <img src="{{ $entity->photo }}" alt="image" class="w-full rounded-full" />
+                                @else
+                                    <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}"
+                                        alt="image" class="w-full rounded-full" />
+                                @endif
+                            </div>
+                            <div class="text-center text-sm">
+                                <h4 class="text-lg font-semibold text-dark">
+                                    {{ $entity->entity_name }}
+                                </h4>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+            <div class="mt-4 flex items-center justify-center">
+                <a href="{{ route('entity.create') }}"
+                    class="inline-flex items-center justify-center rounded bg-primary py-4 px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-90 hover:shadow-lg">
+                    Registrar entidad
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- ====== Entities Section End -->
+
     <!-- ====== Leagues Section Start -->
     <section id="leagues" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
         <div class="container">
@@ -180,7 +224,7 @@
                         <p class="text-lg leading-relaxed text-body-color sm:text-xl sm:leading-relaxed">
                             ¿Estás buscando una liga donde jugar o arbitrar?
                         </p>
-                        
+
                     </div>
                 </div>
             </div>
@@ -351,12 +395,12 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-4 flex items-center justify-center">
+            {{-- <div class="mt-4 flex items-center justify-center">
                 <a href="javascript:void(0)"
                     class="inline-flex items-center justify-center rounded bg-primary py-4 px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-90 hover:shadow-lg">
                     Ver ligas
                 </a>
-            </div>
+            </div> --}}
         </div>
     </section>
     <!-- ====== Leagues Section End -->

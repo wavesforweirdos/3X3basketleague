@@ -14,7 +14,7 @@
                         Diseña tu propio campeonato de baloncesto 3X3. Gestiona equipos, jugadores y árbitros y mantén siempre actualizados partidos y resultados. </p>
                     <ul class="mb-10 flex flex-wrap items-center justify-center">
                         <li>
-                            <a href="{{route('signup')}}"
+                            <a href="{{route('entity.create')}}"
                                 class="inline-flex items-center justify-center rounded-lg bg-white py-4 px-6 text-center text-base font-medium text-dark transition duration-300 ease-in-out hover:text-primary hover:shadow-lg sm:px-10">
                                 Iniciar gestión
                             </a>
