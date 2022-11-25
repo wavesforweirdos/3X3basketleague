@@ -32,53 +32,53 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('12345')
         ]);
 
-        User::factory(9)->create();
+        User::factory(1)->create();
 
         //------All categories----/
         \App\Models\Category::factory()->create([
             'name' => 'senior',
-            'gender' => 'f',
+            'gender' => 'femenino',
         ]);
         \App\Models\Category::factory()->create([
             'name' => 'senior',
-            'gender' => 'm',
+            'gender' => 'masculino',
         ]);
         \App\Models\Category::factory()->create([
             'name' => 'senior',
-            'gender' => 'mix',
+            'gender' => 'mixto',
         ]);
         \App\Models\Category::factory()->create([
             'name' => 'junior',
-            'gender' => 'f',
+            'gender' => 'femenino',
         ]);
         \App\Models\Category::factory()->create([
             'name' => 'junior',
-            'gender' => 'm',
+            'gender' => 'masculino',
         ]);
         \App\Models\Category::factory()->create([
             'name' => 'junior',
-            'gender' => 'mix',
+            'gender' => 'mixto',
         ]);
         \App\Models\Category::factory()->create([
             'name' => 'infantil',
-            'gender' => 'f',
+            'gender' => 'femenino',
         ]);
         \App\Models\Category::factory()->create([
             'name' => 'infantil',
-            'gender' => 'm',
+            'gender' => 'masculino',
         ]);
         \App\Models\Category::factory()->create([
             'name' => 'infantil',
-            'gender' => 'mix',
+            'gender' => 'mixto',
         ]);
 
         Referee::factory(6)->create();
-        Manager::factory(10)->create();
-        BasketCourt::factory(2)->create();
-        Entity::factory(2)->create();
-        League::factory(3)->create();
-        Team::factory(24)->create();
-        Game::factory(12)->create();
+        Manager::factory(3)->create();
+        BasketCourt::factory(10)->create();
+        Entity::factory(3)->create();
+        League::factory(20)->create();
+        Team::factory(30)->create();
+        Game::factory(50)->create();
         Player::factory(100)->create();
     }
 }

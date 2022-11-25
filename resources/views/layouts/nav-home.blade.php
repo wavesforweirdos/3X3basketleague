@@ -3,8 +3,8 @@
         <div class="container">
             <div class="relative -mx-4 flex items-center justify-between">
                 <div class="w-60 max-w-full px-4">
-                    <a href="index" class="navbar-logo block w-full py-5">
-                        <img src="{{  Vite::asset('resources/images/logo/logo-white.svg') }}" alt="logo" class="header-logo.white w-full" />
+                    <a href="{{route('entity.index')}}" class="navbar-logo block w-full py-5">
+                        <img src="{{  Vite::asset('resources/images/logo/logo-white.svg') }}" alt="logo" class="header-logo-white w-full" />
                         <img src="{{  Vite::asset('resources/images/logo/logo.svg') }}" alt="logo" class="header-logo w-full" style="display:none" />
                     </a>
                 </div>
@@ -20,48 +20,48 @@
                             class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
                             <ul class="blcok lg:flex">
                                 <li class="group relative">
-                                    <a href="#home"
-                                        class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70">
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="group relative">
                                     <a href="#features"
                                         class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                                        Features
+                                        Características
                                     </a>
                                 </li>
                                 <li class="group relative">
                                     <a href="#about"
                                         class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                                        About
+                                        Sobre nosotros
+                                    </a>
+                                </li>
+                                <li class="group relative">
+                                    <a href="#entities"
+                                        class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
+                                        Entidades
                                     </a>
                                 </li>
                                 <li class="group relative">
                                     <a href="#leagues"
                                         class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                                        Leagues
+                                        Ligas
                                     </a>
                                 </li>
                                 <li class="group relative">
                                     <a href="#contact"
                                         class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                                        Contact
+                                        Contacto
                                     </a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
-                    <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
-                        <a href="signin"
+                    {{-- <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
+                        <a href="{{route('signin')}}"
                             class="loginBtn py-3 px-7 text-base font-medium text-white hover:opacity-70">
-                            Sign In
+                            Iniciar sesión
                         </a>
-                        <a href="signup"
+                        <a href="{{route('signup')}}"
                             class="signUpBtn rounded-lg bg-white bg-opacity-20 py-3 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark">
-                            Sign Up
+                            Registrarse
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

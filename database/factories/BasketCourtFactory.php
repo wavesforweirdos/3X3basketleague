@@ -15,6 +15,7 @@ class BasketCourtFactory extends Factory
      *
      * @return array<string, mixed>
      */
+   
 
     protected $model = BasketCourt::class;
     public function definition()

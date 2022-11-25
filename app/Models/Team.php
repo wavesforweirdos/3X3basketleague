@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'id_categories', 'id_leagues', 'id_clubs'];
     public $timestamps = false;
 
     //relación uno a muchos inversa
@@ -22,10 +23,10 @@ class Team extends Model
         return $this->hasMany('App\Models\Player');
     }
 
-    //relación uno a uno
+    //relación uno a muchos
     public function category()
     {
-        return $this->hasOne('App\Models\Category');
+        return $this->belongsTo('App\Models\Category');
     }
     
 }

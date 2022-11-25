@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Referee extends Model
 {
     use HasFactory;
+    protected $fillable = ['first_name', 'last_name'];
     public $timestamps = false;
 
 

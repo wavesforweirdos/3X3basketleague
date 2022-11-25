@@ -1,15 +1,15 @@
 @extends('layouts.basic')
 
-@section('title', 'Sign Up | 3KLeague')
+@section('title', 'Registro | 3KLeague')
 @section('navigation')
     @include('layouts.nav-home')
 @endsection
 
 @section('banner')
     <x-banner>
-        Create Your League
+        Regístrate
         <x-slot name='subtitle'>
-            Sign up to create your own league
+            En tu área privada, podrás gestionar tu entidad y crear tu liga
         </x-slot>
     </x-banner>
 @endsection
@@ -23,30 +23,30 @@
                     <div class="wow fadeInUp relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-14 px-8 text-center sm:px-12 md:px-[60px]"
                         data-wow-delay=".15s">
                         <div class="w-60 max-w-full px-4 mx-auto pb-8">
-                            <a href="index.html" class="navbar-logo block w-full py-5">
+                            <a href="/" class="navbar-logo block w-full py-5">
                                 <img src="{{ Vite::asset('resources/images/logo/logo.svg') }}" alt="logo"
                                     class="w-full" />
                             </a>
                         </div>
-                        <form>
+                        <form id="signup-form" method="POST">
                             <div class="mb-6">
-                                <input type="text" placeholder="Name"
+                                <input type="text" placeholder="Nombre"
                                     class="border-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none" />
                             </div>
                             <div class="mb-6">
-                                <input type="email" placeholder="Email"
+                                <input type="email" placeholder="Correo electrónico"
                                     class="border-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none" />
                             </div>
                             <div class="mb-6">
-                                <input type="password" placeholder="Password"
+                                <input type="password" placeholder="Contraseña"
                                     class="border-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none" />
                             </div>
                             <div class="mb-10">
-                                <input type="submit" value="Sign Up"
+                                <input type="submit" name="signup" value="Registrar"
                                     class="border-primary w-full cursor-pointer rounded-md border bg-primary py-3 px-5 text-base text-white transition duration-300 ease-in-out hover:shadow-md" />
                             </div>
                         </form>
-                        <p class="mb-6 text-base text-[#adadad]">Connect With</p>
+                        <p class="mb-6 text-base text-[#adadad]">Regístrate con</p>
                         <ul class="mb-12 flex justify-between w-full">
                             <li class="w-full px-2">
                                 <a href="javascript:void(0)"
@@ -62,7 +62,7 @@
                             </li>
                             <li class="w-full px-2">
                                 <a href="javascript:void(0)"
-                                    class="flex h-11 items-center justify-center border border-gray-300 rounded-md bg-red-400 transition hover:bg-opacity-20">
+                                    class="flex h-11 items-center justify-center border border-gray-300 rounded-md bg-white transition hover:bg-opacity-20">
                                     <svg width="20" height="20" viewBox="0 0 25 25"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill="#EA4335"
@@ -79,20 +79,20 @@
                             </li>
                         </ul>
                         <p class="mb-4 text-base text-[#adadad]">
-                            By creating an account you are agree with our
+                            Al crear una cuenta, acepta nuestros términos de
                             <a href="javascript:void(0)" class="text-primary hover:underline">
-                                Privacy
+                                privacidad
                             </a>
-                            and
+                            y
                             <a href="javascript:void(0)" class="text-primary hover:underline">
-                                Policy
+                                política
                             </a>
                         </p>
 
                         <p class="text-base text-[#adadad]">
-                            Already have an account?
-                            <a href="signin" class="text-primary hover:underline">
-                                Sign In
+                            ¿Ya tienes una cuenta?
+                            <a href="{{route('signin')}}" class="text-primary hover:underline">
+                                Inicia sesión
                             </a>
                         </p>
 

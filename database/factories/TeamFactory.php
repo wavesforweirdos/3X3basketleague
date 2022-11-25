@@ -23,8 +23,8 @@ class TeamFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'id_categories' => Category::all()->random()->id,
+            'name' => fake()->words(1, true),
+            'category_id' => Category::all()->random()->id,
             'id_leagues' => League::all()->random()->id,
         ];
     }

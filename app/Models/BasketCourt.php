@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class BasketCourt extends Model
 {
-  use HasFactory;
+  use HasFactory; 
+  protected $fillable = ['street', 'number', 'zip_code', 'city',];
   public $timestamps = false;
 
   //relación uno a uno inversa

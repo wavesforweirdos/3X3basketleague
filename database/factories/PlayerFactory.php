@@ -27,7 +27,7 @@ class PlayerFactory extends Factory
             'last_name' => fake()->lastName(),
             'birthdate' => fake()->date(),
             'photo' => fake()->text(45),
-            'id_teams' => Team::all()->random()->id,
+            'team_id' => Team::all()->random()->id,
         ];
     }
 }

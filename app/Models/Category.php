@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,12 +11,35 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'gender'];
-
     public $timestamps = false;
 
-    //relación uno a uno inversa
-    public function team()
+    //relación uno a muchos
+    public function teams()
     {
-        return $this->belongsTo('App\Models\Team');
+        return $this->hasMany('App\Models\Team');
+    }
+
+    protected function name(): Attribute
+    {
+        return new Attribute(
+            get: function ($value) {
+                return ucfirst($value);
+            },
+            set: function ($value) {
+                return ucfirst($value);
+            },
+        );
+    }
+
+    protected function gender(): Attribute
+    {
+        return new Attribute(
+            get: function ($value) {
+                return strtolower($value);
+            },
+            set: function ($value) {
+                return strtolower($value);
+            },
+        );
     }
 }

@@ -15,17 +15,15 @@ return new class extends Migration
     {
         Schema::create('entities', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('entity_name');
+            // $table->string('slug');
             $table->year('foundation_year');
             $table->string('phone');
             $table->string('email');
             $table->string('web')->nullable();
             $table->string('country');
             $table->string('city');
-            $table->foreignId('id_managers')
-            ->constrained('managers')
-            ->OnDelete('cascade')
-            ->OnUpdate('cascade');
+            $table->foreignId('id_managers')->constrained('managers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
