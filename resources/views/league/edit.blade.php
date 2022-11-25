@@ -81,25 +81,49 @@
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='players' type='number' placeholder='16' min='3'
-                                        class='sm:row-span-1' value='{{old("players", $league->max_players)}}'>
+                                    <x-forms.input id='max_players' type='number' placeholder='16' min='3'
+                                        class='sm:row-span-1' value='{{old("max_players", $league->max_players)}}'>
                                         Máximo de jugadores por equipo
-                                        @error('players')
+                                        @error('max_players')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
                                     <div class="col-span-6 sm:col-span-3">
                                         <fieldset>
-                                            <legend id="gender" class="block text-sm font-medium text-gray-700">Team gender
+                                            <legend id="team_gender" class="block text-sm font-medium text-gray-700">Géneros aceptados
+                                                @error('team_gender')
+                                                    <small class="text-primary">*{{ $message }}</small>
+                                                @enderror
                                             </legend>
                                             <div
                                                 class="col-span-6 sm:col-span-3 py-1 px-2 flex flex-row gap-2 align-middle">
-                                                <x-forms.checkbox id='f' legend='Femenino'> </x-forms.checkbox>
-                                                <x-forms.checkbox id='m' legend='Masculino'> </x-forms.checkbox>
-                                                <x-forms.checkbox id='mix' legend='Mixto'> </x-forms.checkbox>
+                                                <x-forms.checkbox id='team_gender[f]' legend='Femenino'> </x-forms.checkbox>
+                                                <x-forms.checkbox id='team_gender[m]' legend='Masculino'> </x-forms.checkbox>
+                                                <x-forms.checkbox id='team_gender[x]' legend='Mixto'> </x-forms.checkbox>
                                             </div>
                                         </fieldset>
                                     </div>
+                                    <x-forms.input id='registration_day' type='date'
+                                        class='sm:row-span-1' value='{{old("registration_day", $league->registration_day)}}'>
+                                        Fecha límite de registro de equipos
+                                        @error('registration_day')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
+                                    </x-forms.input>
+                                    <x-forms.input id='start_day' type='date'
+                                        class='sm:row-span-1' value='{{old("start_day" , $league->start_day)}}'>
+                                        Fecha de inicio
+                                        @error('start_day')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
+                                    </x-forms.input>
+                                    <x-forms.input id='end_day' type='date'
+                                        class='sm:row-span-1' value='{{old("end_day" , $league->end_day)}}'>
+                                        Fecha fin de liga
+                                        @error('end_day')
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
+                                    </x-forms.input>
                                 </div>
                                 {{-- Basket-Court Info --}}
                                 <div class="px-4 col-span-6 sm:col-span-3 mt-12">
@@ -120,9 +144,9 @@
                                         <small class="text-primary">*{{ $message }}</small>
                                     @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='zipcode' type='number' placeholder='08911' value='{{old("zipcode", $basket_court->zip_code)}}'>
+                                    <x-forms.input id='zip_code' type='number' placeholder='08911' value='{{old("zip_code", $basket_court->zip_code)}}'>
                                         Código postal
-                                        @error('zipcode')
+                                        @error('zip_code')
                                         <small class="text-primary">*{{ $message }}</small>
                                     @enderror
                                     </x-forms.input>

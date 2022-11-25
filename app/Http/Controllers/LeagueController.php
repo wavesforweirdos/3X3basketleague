@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreLeague;
 use App\Models\BasketCourt;
+use App\Models\Category;
 use App\Models\Entity;
 use App\Models\League;
 use App\Models\Manager;
+use App\Models\Team;
 use Dotenv\Parser\Lexer;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
@@ -35,16 +37,21 @@ class LeagueController extends Controller
         $id_basketcourt = $league->id_basket_courts;
         $basket_court = BasketCourt::find($id_basketcourt);
 
-        return view('league.show', compact('league', 'entity', 'manager', 'basket_court'));
+        $teams = Team::select("*")->where('id_leagues', '=', $league->id)->get()->sortByDesc('id_categories');
+
+        return view('league.show', compact('league', 'entity', 'manager', 'basket_court', 'teams'));
     }
 
     public function store(StoreLeague $request)
     {
         $basket_court = BasketCourt::create($request->all());
-        $request['id_basketcourts'] = $basket_court->id;
+        $request['id_basket_courts'] = $basket_court->id;
 
+        $arrayGender = array_keys($request->team_gender);
+        $strGender = implode(',', $arrayGender);
+        $request['team_gender'] = $strGender;
         $league = League::create($request->all());
-        return redirect()->route('league.show', compact('league'));
+        return redirect()->route('league.show', $league);
     }
 
     public function edit(League $league)
@@ -73,9 +80,13 @@ class LeagueController extends Controller
             $image = $request->file('image');
             $image_name = $request['name'] . '_profile.' . $image->extension();
             $path = $request->file('image')->storeAs($destination_path, strtolower($image_name));
-            
+
             $request['photo'] = $image_name;
         }
+        $arrayGender = array_keys($request->team_gender);
+        $strGender = implode(',', $arrayGender);
+        $request['team_gender'] = $strGender;
+
         $league->update($request->all());
         return redirect()->route('league.show', $league);
     }

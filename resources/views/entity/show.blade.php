@@ -96,7 +96,7 @@
                             disfrutar!
                         </p>
                         <div class="w-full">
-                            <a href="{{ route('league.create', $entity->id) }}"
+                            <a href="{{ route('league.create', $entity )}}"
                                 class="mt-10 inline-block rounded-full border border-primary bg-transparent py-4 px-11 text-center text-base font-medium text-primary transition duration-300 ease-in-out hover:border-primary hover:bg-primary hover:text-white">
                                 Crear liga
                             </a>
@@ -135,7 +135,11 @@
                         <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
                             <div class="mb-8 overflow-hidden rounded">
                                 <a href="{{ route('league.show', $league) }}" class="block">
-                                    <img src="{{ $league->logo }}" alt="image"
+                                    <img src="
+                                    <?php
+                                    ($league->logo)? $src=$league->logo : $src=fake()->imageUrl($width = 250, $height = 250, $league->name);
+                                    echo $src;
+                                    ?>" alt="image"
                                         class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
                                 </a>
                             </div>

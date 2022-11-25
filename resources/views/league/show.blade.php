@@ -70,7 +70,7 @@
                                 $figure .= '<circle cx="' . $j . '" cy="' . $i . '" r="1.4" transform="rotate(-90 1.4 38)" fill="white" fill-opacity="0.44" />';
                             }
                         }
-                        $figure .= '</svg>';
+                        $figure .= '</svg>';zzzzz
                         echo $figure;
                     @endphp
                 </span>
@@ -78,6 +78,7 @@
         </div>
     </div> --}}
 
+    {{-- Leagues Info --}}
     <section id="infoLeague" class="ud-contact relative py-20 md:py-[120px]">
         <div class="absolute top-0 left-0 z-[-1] h-[40%] w-full bg-[#f3f4fe] lg:h-[50%] xl:h-1/4"></div>
         <div class="container px-4">
@@ -205,6 +206,91 @@
                     </div>
                 </div>
                 {{-- League Info End --}}
+            </div>
+        </div>
+    </section>
+
+    {{-- Existen equipos asociadas a esta league --}}
+    <?php
+        $lenght = count($teams);
+        if ($lenght){
+    ?>
+    <section id="oldTeams" class="pt-20 pb-20 lg:pt-[120px] lg:pb-[120px] bg-[#f3f4fe]">
+        <div class="container">
+            <div class="-mx-4 flex flex-wrap">
+                <div class="w-full px-4">
+                    <div class="mx-auto mb-[60px] max-w-[620px] text-center lg:mb-20">
+                        <span class="mb-2 block text-lg font-semibold text-primary">
+                            Equipos
+                        </span>
+                        <h2 class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]">
+                            Equipos creados
+                        </h2>
+                        <p class="text-lg leading-relaxed text-body-color sm:text-xl sm:leading-relaxed">
+                            En esta sección encontrarás los equipos de la liga {{ $league->name }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="-mx-4 flex flex-wrap">
+                @foreach ($teams as $team)
+                    <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                        <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
+                            <div class="wow fadeInUp rounded-lg bg-white pl-8 pb-8 pt-4 pr-4 shadow-testimonial">
+                                <div id="editInfo" class="w-full flex gap-2 items-end justify-end text-primary">
+                                    <a href="{{ route('team.edit', $team) }}" name="edit"><i
+                                            class="fa-regular fa-pen-to-square hover:text-[#f3f4fe]"></i></a>
+                                    <form action="{{ route('team.destroy', $team) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit">
+                                            <i class="fa-solid fa-xmark hover:text-[#f3f4fe]"></i>
+                                        </button>
+                                    </form></a>
+                                </div>
+                                <h3>
+                                    <div class="inline-block text-xl font-semibold text-dark hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl"
+                                        style="text-transform:uppercase">
+                                        {{ $team->name }}</div>
+                                </h3>
+                                <p class="text-base text-primary font-semibold mb-4">
+                                    {{ $team->category->name }} {{ $team->category->gender }}
+                                </p>
+                                <div class="text-base text-body-color">
+                                    <ul class="text-base text-body-color">
+                                        @foreach ($team->players as $player)
+                                            <a href="{{ route('player.show', $player) }}">
+                                                <li>{{ $player->first_name }} {{ $player->last_name }}</li>
+                                            </a>
+                                        @endforeach
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <?php
+        }
+    ?>
+
+    {{-- Añadir un equipo --}}
+    <section id="newTeam" class="relative z-20 overflow-hidden bg-[#f3f4fe] pt-20 pb-20 lg:pt-[120px] lg:pb-[120px]">
+        <div class="container">
+            <div class="-mx-4 flex flex-wrap">
+                <div class="w-full px-4">
+                    <div class="mx-auto max-w-[620px] text-center">
+                        <div class="w-full">
+                            <a href="{{ route('team.create', $league) }}"
+                                class="mt-10 inline-block rounded-full border border-primary bg-transparent py-4 px-11 text-center text-base font-medium text-primary transition duration-300 ease-in-out hover:border-primary hover:bg-primary hover:text-white">
+                                Crear equipos
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

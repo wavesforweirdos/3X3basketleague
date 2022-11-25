@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->enum('name', ['senior', 'junior', 'infantil']);
-            $table->enum('gender', ['f', 'm', 'mix']);
+            $table->enum('gender', ['femenino', 'masculino', 'mixto']);
         });
     }
 

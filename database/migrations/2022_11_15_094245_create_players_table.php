@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->date('birthdate');
             $table->string('photo')->nullable();
-            $table->foreignId('id_teams')->constrained('teams')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('team_id')->constrained('teams')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
+use Illuminate\Validation\Rule;
 
 class StoreEntity extends FormRequest
 {
@@ -31,9 +33,10 @@ class StoreEntity extends FormRequest
             'entity_name' => 'required',
             'foundation_year'  => 'required',
             'entity_phone'  => 'required',
-            'email'  => 'required',
+            'email'  => 'required|email:rfc,dns',
             'country'  => 'required',
             'city'  => 'required',
+            'image' => File::image()->min(900)->max(12 * 1024)->dimensions(Rule::dimensions()->maxWidth(500)->maxHeight(500)),
         ];
     }
 }

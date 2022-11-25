@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\LeagueController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\PlayerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +23,20 @@ Route::get('/', [EntityController::class, 'index'])->name('home');
 
 // --------- Rutas de Entity ----------
 Route::resource('entidad', EntityController::class)->parameters(['entidad' => 'entity'])->names('entity');
+
 // --------- Rutas de League ----------
-Route::resource('league', LeagueController::class)->parameters(['liga' => 'league'])->names('league');
+// Route::resource('league', LeagueController::class)->parameters(['liga' => 'league'])->names('league');
+Route::resource('league', LeagueController::class);
+Route::get('league/{id}',[LeagueController::class ,'show'])->name('league.show');
+Route::get('league/create/{league}',[LeagueController::class ,'create'])->name('league.create');
+
+// --------- Rutas de Team ----------
+Route::resource('team', TeamController::class);
+Route::get('team/create/{id}',[TeamController::class ,'create'])->name('team.create');
+
+// --------- Rutas de Player ----------
+Route::resource('player', PlayerController::class)->parameters(['jugador' => 'player'])->names('player');
+
 
 // --------- Rutas de User ----------
 // Route::get('/', [UserController::class, 'index'])->name('home');

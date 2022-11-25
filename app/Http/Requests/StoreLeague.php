@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
+use Illuminate\Validation\Rule;
 
 class StoreLeague extends FormRequest
 {
@@ -26,11 +28,17 @@ class StoreLeague extends FormRequest
         return [
             'name' => 'required',
             'min_age'  => 'required',
-            'players' => 'required',
+            'max_players' => 'required',
+            'registration_day' => 'required|date|before:start_day',
+            'start_day' => 'required|date',
+            'end_day' => 'required|date|after:start_day',
             'street' => 'required',
             'number'  => 'required',
-            'zipcode'  => 'required',
+            'zip_code'  => 'required',
             'city'  => 'required',
+            'team_gender' => 'required',
+            'gender.*' => 'in:Femenino,Masculino,Mixto',
+            'image' => File::image()->min(900)->max(12 * 1024)->dimensions(Rule::dimensions()->maxWidth(500)->maxHeight(500)),
         ];
     }
 }

@@ -34,7 +34,7 @@ class EntityFactory extends Factory
             'country' => fake()->country(),
             'city' => fake()->city(),
             'id_managers' => Manager::all()->random()->id,
-            'photo' => fake()->imageUrl(200, 200),
+            'photo' => fake()->imageUrl(200, 200, $name),
         ];
     }
 }

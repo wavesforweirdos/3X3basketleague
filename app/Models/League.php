@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class League extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'min_age', 'max_players', 'team_gender', 'id_basket_courts', 'id_entities'];
+    protected $fillable = ['name', 'min_age', 'max_players', 'team_gender', 'start_day', 'registration_day', 'end_day', 'id_basket_courts', 'id_entities'];
 
     public $timestamps = false;
 
@@ -38,4 +38,9 @@ class League extends Model
     {
         return $this->hasOne('App\Models\BasketCourt');
     }
+
+    public function setSkillsAttribute($value)
+{
+     $this->attributes['team_gender'] = implode(', ', $value);
+}
 }

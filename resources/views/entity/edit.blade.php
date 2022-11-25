@@ -120,8 +120,7 @@
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='foundation_year' type='number'
-                                    value='{{ old("foundation_year", $entity->foundation_year) }}'>
+                                    <x-forms.input id='foundation_year' type='number' value='{{ old("foundation_year", $entity->foundation_year) }}'>
                                         Año de fundación
                                         @error('foundation_year')
                                             <small class="text-primary">*{{ $message }}</small>

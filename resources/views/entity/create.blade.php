@@ -33,7 +33,6 @@
                                     <hr class="mt-1 mb-5">
                                 </div>
                                 <div class="grid grid-cols-6 gap-6">
-
                                     <x-forms.input id='first_name' type='text' placeholder='Carles' value='{{old("first_name")}}'>
                                         Nombre
                                         @error('first_name')

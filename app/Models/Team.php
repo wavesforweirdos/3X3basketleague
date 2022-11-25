@@ -23,10 +23,10 @@ class Team extends Model
         return $this->hasMany('App\Models\Player');
     }
 
-    //relación uno a uno
+    //relación uno a muchos
     public function category()
     {
-        return $this->hasOne('App\Models\Category');
+        return $this->belongsTo('App\Models\Category');
     }
     
 }

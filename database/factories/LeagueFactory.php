@@ -26,11 +26,11 @@ class LeagueFactory extends Factory
     public function definition()
     {
         $date = date("Y-m-d", mt_rand(strtotime("2000-01-01"), strtotime(date(now())))); //fecha aleatoria entre un intervalo
-        $name = fake()->name();
+        $name = fake()->word();
         return [
-            'name' => $name,
+            'name' => 'Liga ' . $name,
             // 'slug' => Str::slug($name, '-'),
-            'logo' => fake()->imageUrl($width = 100, $height = 50),
+            'logo' => fake()->imageUrl($width = 250, $height = 250, $name),
             'min_age' => fake()->numberBetween(0, 100),
             'max_players' => fake()->numberBetween(3, 10),
             'team_gender' => implode(",", fake()->randomElements(['f', 'm', 'x'], 3)),

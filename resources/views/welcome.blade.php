@@ -143,8 +143,7 @@
                                     Mágnifica herramienta para administrar una Liga de Baloncesto 3X3
                                 </h2>
                                 <p class="mb-9 text-base leading-relaxed text-body-color">
-                                    La intención principal es centrarse en la liga y reducir todo lo más tedioso pero
-                                    trámites indispensables para su realización.
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae quasi voluptas obcaecati quia. Cupiditate quas reprehenderit sit harum, asperiores natus aliquam maiores! Atque incidunt soluta nisi reprehenderit, cumque dolorum fugit.
                                 </p>
                                 <p class="mb-9 text-base leading-relaxed text-body-color">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nulla voluptates autem
@@ -205,7 +204,7 @@
             <div class="mt-4 flex items-center justify-center">
                 <a href="{{ route('entity.create') }}"
                     class="inline-flex items-center justify-center rounded bg-primary py-4 px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-90 hover:shadow-lg">
-                    Registrar entidad
+                    Nueva entidad
                 </a>
             </div>
         </div>
@@ -213,7 +212,7 @@
     <!-- ====== Entities Section End -->
 
     <!-- ====== Leagues Section Start -->
-    <section id="leagues" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+    {{-- <section id="leagues" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
         <div class="container">
             <div class="-mx-4 flex flex-wrap">
                 <div class="w-full px-4">
@@ -402,7 +401,7 @@
                 </a>
             </div> --}}
         </div>
-    </section>
+    </section> --}}
     <!-- ====== Leagues Section End -->
 
     <!-- ====== Contact Start ====== -->

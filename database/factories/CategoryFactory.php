@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => fake()->randomElement(['senior', 'junior', 'infantil']),
-            'gender' => fake()->randomElement(['f','m','mix']),
+            'gender' => fake()->randomElement(['f', 'm', 'x']),
         ];
     }
 }
