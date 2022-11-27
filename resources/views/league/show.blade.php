@@ -250,7 +250,8 @@
                                     </form></a>
                                 </div>
                                 <h3>
-                                    <a title="Información de {{ $team->name }}" class="inline-block text-xl font-semibold text-dark hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl"
+                                    <a title="Información de {{ $team->name }}"
+                                        class="inline-block text-xl font-semibold text-dark hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl"
                                         style="text-transform:uppercase">
                                         Equipo {{ $team->name }}</a>
                                 </h3>
@@ -260,7 +261,8 @@
                                 <div class="text-base text-body-color">
                                     <ul class="text-base text-body-color">
                                         @foreach ($team->players as $player)
-                                            <a title="Perfil de {{ $player->first_name }}" href="{{ route('player.show', $player) }}">
+                                            <a title="Perfil de {{ $player->first_name }}"
+                                                href="{{ route('player.show', $player) }}">
                                                 <li>{{ $player->first_name }} {{ $player->last_name }}</li>
                                             </a>
                                         @endforeach
@@ -345,18 +347,18 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-600 text-sm font-light">
-                                @foreach ($games->sortByDesc('start_time') as $game)
+                                @foreach ($games as $game)
                                     <tr class="border-b border-gray-200 hover:bg-gray-100">
                                         {{-- fecha y hora del partido --}}
                                         <td class="py-3 px-6 text-left whitespace-nowrap">
                                             <div class="flex items-center justify-center">
-                                                <span>{{ $game->start_time }}></span>
+                                                <span>{{ $game->start_time }}</span>
                                             </div>
                                         </td>
                                         {{-- equipo local --}}
                                         <td class="py-3 px-6 text-right">
                                             <div class="flex items-center justify-end">
-                                                <span class="font-medium">{{ $game->id_teams_local }}</span>
+                                                <span class="font-medium">{{ $game->id_teams_local->name }}</span>
                                             </div>
                                         </td>
                                         {{-- puntos equipo local --}}
@@ -386,7 +388,7 @@
                                         {{-- equipo visitante --}}
                                         <td class="py-3 px-6 text-left">
                                             <div class="flex items-center">
-                                                <span class="font-medium">{{ $game->id_teams_visiting }}</span>
+                                                <span class="font-medium">{{ $game->id_teams_visiting->name }}</span>
                                             </div>
                                         </td>
                                         {{-- árbitro --}}
@@ -427,9 +429,10 @@
                                                 @default
                                             @endswitch
                                         </td>
-                                        <td class="pr-2  text-center font-light">
+                                        <td class="pr-2 text-center font-light">
                                             <div class="flex item-center justify-center">
-                                                <button title="Ver acta o minuto a minuto" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                                <button title="Ver acta o minuto a minuto"
+                                                    class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -439,38 +442,47 @@
                                                             d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                                     </svg>
                                                 </button>
-                                                <button title="Editar registro" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                                <a href="{{ route('game.edit', $game) }}" title="Editar registro"
+                                                    class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="1.5"
                                                             d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                                     </svg>
-                                                </button>
-                                                <button title="Eliminar registro" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="1.5"
-                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                    </svg>
-                                                </button>
+                                                </a>
+                                                <form action="{{ route('game.destroy', $game) }}" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button title="Eliminar registro"
+                                                        class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="1.5"
+                                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                        </svg>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="py-3">
+                            {{$games->links('vendor/pagination/custom') }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    {{-- Añadir un equipo --}}
+    {{-- Añadir un partido $ ver todos button --}}
     <section id="newGame"
         class="relative z-20 overflow-hidden 
         <?php
-            $lenght = count($teams);
+            $lenght = count($games);
             if (!$lenght){
         ?>
             pb-20 lg:pb-[120px]">
@@ -484,10 +496,6 @@
                             <a href="{{ route('team.create', $league) }}"
                                 class="mt-10 inline-block rounded-full border border-primary bg-transparent py-4 px-11 text-center text-base font-medium text-primary transition duration-300 ease-in-out hover:border-primary hover:bg-primary hover:text-white">
                                 Agregar partido
-                            </a>
-                            <a href="{{ route('team.create', $league) }}"
-                                class="mt-10 inline-block rounded-full border border-primary bg-transparent py-4 px-11 text-center text-base font-medium text-primary transition duration-300 ease-in-out hover:border-primary hover:bg-primary hover:text-white">
-                                Ver todos
                             </a>
                         </div>
                     </div>

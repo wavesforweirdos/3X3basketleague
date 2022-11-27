@@ -40,7 +40,7 @@ class LeagueController extends Controller
 
         $teams = $league->teams->sortBy('category_id');
 
-        $games = Game::find($league->id)::paginate(10);
+        $games = Game::where('league_id', $league->id)->orderBy('start_time', 'DESC')->Paginate(10);
 
         return view('league.show', compact('league', 'entity', 'manager', 'basket_court', 'teams', 'games'));
     }
@@ -102,5 +102,4 @@ class LeagueController extends Controller
         $league->delete();
         return redirect()->route('entity.show', $entity);
     }
-
 }

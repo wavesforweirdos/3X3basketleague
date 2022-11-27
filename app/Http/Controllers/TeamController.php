@@ -26,8 +26,6 @@ class TeamController extends Controller
 
     public function store(StoreTeam $request)
     {
-        return $request['first_name'][2];
-        return $request;
         $team = Team::create($request->all());
         $league = League::find($team->league_id);
 

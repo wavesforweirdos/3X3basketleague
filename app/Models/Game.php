@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Game extends Model
 {
     use HasFactory;
-    protected $fillable = ['id_leagues', 'id_teams_local', 'id_teams_visiting', 'score_loca', 'score_visiting', 'start_time', 'end_time', 'referees_id'];
+    protected $fillable = ['league_id', 'id_teams_local', 'id_teams_visiting', 'start_time', 'id_referees', 'state'];
     public $timestamps = false;
 
     //relación uno a muchos inversa
@@ -17,9 +19,37 @@ class Game extends Model
         return $this->belongsTo('App\Models\League');
     }
 
-    //relación uno a uno
-    public function refereeTeam()
+    public function referee()
     {
-        return $this->hasOne('App\Models\Referee');
+        return $this->belongsTo('App\Models\Referee');
     }
+
+    // protected function startTime(): Attribute
+    // {
+    //     return new Attribute(
+    //          get: fn($value) => date_format(new DateTime($value), 'd M, Y | H:i'),
+    //         // get: fn ($value) => date_format(new DateTime($value), 'Y-m-d  H:i'),
+    //     );
+    // }
+    protected function duration(): Attribute
+    {
+        return new Attribute(
+
+            get: fn ($value) => date_format(new DateTime($value), "i' s''"),
+        );
+    }
+
+    protected function idTeamsLocal(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Team::find($value),
+        );
+    }
+    protected function idTeamsVisiting(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Team::find($value),
+        );
+    }
+   
 }
