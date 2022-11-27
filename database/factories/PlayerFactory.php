@@ -26,7 +26,8 @@ class PlayerFactory extends Factory
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
             'birthdate' => fake()->date(),
-            'photo' => fake()->text(45),
+            'photo' => fake()->imageUrl($width = 250, $height = 250, 'player'),
+            'email' => fake()->unique()->safeEmail(),
             'team_id' => Team::all()->random()->id,
         ];
     }

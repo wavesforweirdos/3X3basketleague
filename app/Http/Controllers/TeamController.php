@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\League;
+use App\Models\Category;
 use App\Models\Team;
+use App\Models\Player;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTeam;
+
 
 class TeamController extends Controller
 {
@@ -20,21 +24,49 @@ class TeamController extends Controller
         return view('team.create', compact('league'));
     }
 
-    public function store(StoreTeam $request, $league)
+    public function store(StoreTeam $request)
     {
+        return $request['first_name'][2];
+        return $request;
         $team = Team::create($request->all());
-        return redirect()->route('league.show', compact('league'));
+        $league = League::find($team->league_id);
+
+        return redirect()->route('league.show', $league);
     }
 
     public function edit(Team $team)
     {
+        $league = League::find($team->league_id);
+        $players = $team->players;
+        $category = Category::find($team->category_id);
+        return view('team.edit', compact('league', 'team', 'players', 'category'));
     }
 
     public function update(StoreTeam $request, Team $team)
     {
+        $team->update($request->all());
+        foreach ($request->players as $requestPlayer) {
+            if (array_key_exists('id', $requestPlayer)) {
+                $player = Player::find($requestPlayer['id']);
+                $player->update($requestPlayer);
+            } else {
+                if (!$requestPlayer['first_name']) {
+                    break;
+                }
+                $requestPlayer['team_id'] = $team->id;
+                $player = Player::create($requestPlayer);
+            }
+        }
+        $league = League::find($team->league_id);
+        $league = $league->id;
+        return redirect()->route('league.show', $league);
     }
 
     public function destroy(Team $team)
     {
+        $league = League::find($team->league_id);
+        $league = $league->id;
+        $team->delete();
+        return redirect()->route('league.show', $league);
     }
 }
