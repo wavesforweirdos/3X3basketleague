@@ -148,6 +148,12 @@ return [
 
     'attributes' => [
         'name' => 'nombre',
+        'image' => 'imagen',
+        'first_name' => 'nombre',
+        'last_name' => 'primer apellido',
+        'start_day' => 'fecha de inicio',
+        'end_day' => 'fecha fin',
+        'registration_day' => 'fecha de registro',
     ],
 
 ];
