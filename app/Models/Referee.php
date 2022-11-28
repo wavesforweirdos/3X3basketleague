@@ -12,9 +12,10 @@ class Referee extends Model
     public $timestamps = false;
 
 
-    //relación uno a uno inversa
-    public function refereeTeam()
+    //relación muchos a uno
+    public function games()
     {
-        return $this->belongsTo('App\Models\Game');
+        return $this->hasMany('App\Models\Game');
     }
+
 }

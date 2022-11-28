@@ -2,7 +2,7 @@
 
 @section('title', 'Entity | 3KLeague')
 @section('navigation')
-    @include('layouts.nav-home')
+    @include('layouts.nav-simply2')
 @endsection
 
 @section('banner')
@@ -34,7 +34,7 @@
                                 <hr class="mt-1 mb-5">
                             </div>
                             <div class="grid grid-cols-6 gap-6 mb-2">
-                                <x-forms.input id='id_leagues' type='number' placeholder="{{ $league->id }}"
+                                <x-forms.input id='league_id' type='number' placeholder="{{ $league->id }}"
                                     class='sm:row-span-1 hidden' value="{{ $league->id }}">
                                     id_entities
                                 </x-forms.input>
@@ -87,7 +87,7 @@
                                 @for ($i = 0; $i < $league->max_players; $i++)
                                     <label class='text-sm font-medium text-gray-700 pt-3 col-span-6'>
                                         @if ($i <= 2)
-                                            @error('first_name[' . $i . ']')
+                                            @error("players[{{ $i }}][first_name]")
                                                 <small class="text-primary">*{{ $message }}</small>
                                             @enderror
                                         @endif
@@ -96,13 +96,17 @@
                                         <div class="">
                                             <p class="text-sm text-opacity-30">{{ 1 + $i }}</p>
                                         </div>
-                                        <x-forms.input id='first_name[]' type="text" placeholder="Nombre" class="w-full md:w-1/3">
+                                        <x-forms.input id="players[{{ $i }}][first_name]" type="text"
+                                            placeholder="Nombre" class="w-full md:w-1/3">
                                         </x-forms.input>
-                                        <x-forms.input id='last_name[]' type="text" placeholder="Primer apellido" class="w-full md:w-1/3">
+                                        <x-forms.input id="players[{{ $i }}][last_name]'" type="text"
+                                            placeholder="Primer apellido" class="w-full md:w-1/3">
                                         </x-forms.input>
-                                        <x-forms.input id='birthdate[]' type='date' class="w-full md:w-1/3">
+                                        <x-forms.input id="players[{{ $i }}][birthdate]'" type='date'
+                                            class="w-full md:w-1/3">
                                         </x-forms.input>
-                                        <x-forms.input id='email[]' type='email' placeholder='correo@example.com' class="w-full md:w-1/4">
+                                        <x-forms.input id="players[{{ $i }}][email]" type='email'
+                                            placeholder='correo@example.com' class="w-full md:w-1/4">
                                         </x-forms.input>
                                     </div>
                                 @endfor

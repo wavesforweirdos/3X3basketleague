@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EntityController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\LeagueController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PlayerController;
@@ -18,25 +19,33 @@ use App\Http\Controllers\PlayerController;
 |
 */
 
-//Route::   (metodo:get/post)   ('url que se mostrará',[Controller::class, 'funcion a llamar'])->name('nombre de la ruta')
+//BasciRoute ===============> Route::   (metodo:get/post)   ('url que se mostrará',[Controller::class, 'funcion a llamar'])->name('nombre de la ruta')
+//Generar DefaultRoutes ===> Route::resource('league', LeagueController::class)->parameters(['liga' => 'league'])->names('league');
+
+
 Route::get('/', [EntityController::class, 'index'])->name('home');
 
+
+
 // --------- Rutas de Entity ----------
-Route::resource('entidad', EntityController::class)->parameters(['entidad' => 'entity'])->names('entity');
+Route::resource('entity', EntityController::class)->names('entity');
 
 // --------- Rutas de League ----------
-// Route::resource('league', LeagueController::class)->parameters(['liga' => 'league'])->names('league');
-Route::resource('league', LeagueController::class);
-Route::get('league/{id}',[LeagueController::class ,'show'])->name('league.show');
-Route::get('league/create/{league}',[LeagueController::class ,'create'])->name('league.create');
+Route::resource('league', LeagueController::class)->names('league');
+Route::get('league/{id}', [LeagueController::class, 'show'])->name('league.show');
+Route::get('league/create/{league}', [LeagueController::class, 'create'])->name('league.create');
 
 // --------- Rutas de Team ----------
-Route::resource('team', TeamController::class);
-Route::get('team/{id}',[TeamController::class ,'show'])->name('team.show');
-Route::get('team/create/{id}',[TeamController::class ,'create'])->name('team.create');
+Route::resource('team', TeamController::class)->names('team');
+Route::get('league/{league}/team', [TeamController::class, 'show'])->name('team.show');
+Route::get('league/{league}/team/create', [TeamController::class, 'create'])->name('team.create');
 
 // --------- Rutas de Player ----------
 Route::resource('player', PlayerController::class)->names('player');
+
+// --------- Rutas de Game ----------
+Route::resource('game', GameController::class)->names('game');
+Route::get('game/create/{league}', [GameController::class, 'create'])->name('game.create');
 
 
 // --------- Rutas de User ----------
@@ -44,4 +53,3 @@ Route::resource('player', PlayerController::class)->names('player');
 Route::get('/index', [UserController::class, 'index'])->name('home');
 Route::get('/signin', [UserController::class, 'signin'])->name('signin');
 Route::get('/signup', [UserController::class, 'signup'])->name('signup');;
-

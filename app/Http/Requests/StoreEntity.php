@@ -28,15 +28,15 @@ class StoreEntity extends FormRequest
         return [
             'first_name' => 'required',
             'last_name'  => 'required',
-            'phone' => 'required',
+            'phone' => 'required|digits:9',
             'state'  => 'required',
             'entity_name' => 'required',
-            'foundation_year'  => 'required',
-            'entity_phone'  => 'required',
+            'foundation_year'  => 'required|digits:4|integer|min:1900',
+            'entity_phone'  => 'required|digits:9',
             'email'  => 'required|email:rfc,dns',
             'country'  => 'required',
             'city'  => 'required',
-            'image' => File::image()->min(900)->max(12 * 1024)->dimensions(Rule::dimensions()->maxWidth(500)->maxHeight(500)),
+            'photo' => 'mimes:csv,txt,xlx,xls,pdf|max:2048'
         ];
     }
 }

@@ -20,25 +20,29 @@
                     <nav id="navbarCollapse"
                         class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
                         <ul class="blcok lg:flex lg:justify-end">
-                            {{-- <li class="group relative">
-                                <a href="#dashboard"
-                                    class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70">
-                                    Dashboard
-                                </a>
-                            </li> --}}
                             <li class="group relative">
-                                <a href="#infoEntity"
+                                <a href="#infoLeague"
                                     class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                                    Entidad
+                                    Liga
                                 </a>
                             </li>
                             <?php 
-                                if (isset($leagues)){
-                                $lenght = count($leagues);  if ($lenght){ ?>
+                                if (isset($teams)){
+                                $lenght = count($teams);  if ($lenght){ ?>
                             <li class="group relative">
-                                <a href="#oldLeagues"
+                                <a href="#infoTeams"
                                     class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                                    Ligas
+                                    Equipos
+                                </a>
+                            </li>
+                            <?php }} ?>
+                            <?php 
+                                if (isset($games)){
+                                $lenght = count($games);  if ($lenght){ ?>
+                            <li class="group relative">
+                                <a href="#infoGame"
+                                    class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
+                                    Partidos
                                 </a>
                             </li>
                             <?php }} ?>

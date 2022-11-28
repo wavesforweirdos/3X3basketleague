@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTeam;
 use App\Models\League;
 use App\Models\Category;
 use App\Models\Team;
 use App\Models\Player;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreTeam;
 
 
 class TeamController extends Controller
@@ -26,9 +26,14 @@ class TeamController extends Controller
 
     public function store(StoreTeam $request)
     {
-        return $request['first_name'][2];
-        return $request;
         $team = Team::create($request->all());
+        foreach ($request->players as $requestPlayer) {
+            if (!$requestPlayer['first_name'] || !$requestPlayer['last_name'] || !$requestPlayer['birthdate'] || !$requestPlayer['email']) {
+                break;
+            }
+            $requestPlayer['team_id'] = $team->id;
+            $player = Player::create($requestPlayer);
+        }
         $league = League::find($team->league_id);
 
         return redirect()->route('league.show', $league);
@@ -50,7 +55,7 @@ class TeamController extends Controller
                 $player = Player::find($requestPlayer['id']);
                 $player->update($requestPlayer);
             } else {
-                if (!$requestPlayer['first_name']) {
+                if (!$requestPlayer['first_name'] || !$requestPlayer['last_name'] || !$requestPlayer['birthdate'] || !$requestPlayer['email']) {
                     break;
                 }
                 $requestPlayer['team_id'] = $team->id;

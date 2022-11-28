@@ -9,7 +9,6 @@
                     </a>
                 </div>
                 <div class="flex w-full items-center justify-between px-4">
-                    <div>
                         <button id="navbarToggler"
                             class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden">
                             <span class="relative my-[6px] block h-[2px] w-[30px] bg-white"></span>
@@ -18,7 +17,7 @@
                         </button>
                         <nav id="navbarCollapse"
                             class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
-                            <ul class="blcok lg:flex">
+                            <ul class="block lg:flex lg:justify-end">
                                 <li class="group relative">
                                     <a href="#features"
                                         class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
@@ -37,12 +36,12 @@
                                         Entidades
                                     </a>
                                 </li>
-                                <li class="group relative">
+                                {{-- <li class="group relative">
                                     <a href="#leagues"
                                         class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
                                         Ligas
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="group relative">
                                     <a href="#contact"
                                         class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
@@ -51,7 +50,6 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
                     {{-- <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
                         <a href="{{route('signin')}}"
                             class="loginBtn py-3 px-7 text-base font-medium text-white hover:opacity-70">

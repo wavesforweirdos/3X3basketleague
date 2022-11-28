@@ -61,12 +61,13 @@ class EntityController extends Controller
 
         $manager->update($request->all());
         $request['id_managers'] = $manager->id;
+
         if ($request->hasFile('image')) {
             $destination_path = 'public/images/entities';
             $image = $request->file('image');
             $image_name = $request['entity_name'] . '_profile.' . $image->extension();
             $path = $request->file('image')->storeAs($destination_path, strtolower($image_name));
-
+            
             $request['photo'] = $image_name;
         }
         $entity->update($request->all());
