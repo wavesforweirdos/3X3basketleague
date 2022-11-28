@@ -6,6 +6,7 @@ use App\Http\Requests\StoreLeague;
 use App\Models\BasketCourt;
 use App\Models\Category;
 use App\Models\Entity;
+use App\Models\Game;
 use App\Models\League;
 use App\Models\Manager;
 use App\Models\Team;
@@ -37,9 +38,11 @@ class LeagueController extends Controller
         $id_basketcourt = $league->id_basket_courts;
         $basket_court = BasketCourt::find($id_basketcourt);
 
-        $teams = Team::select("*")->where('id_leagues', '=', $league->id)->get()->sortByDesc('id_categories');
+        $teams = $league->teams->sortBy('category_id');
 
-        return view('league.show', compact('league', 'entity', 'manager', 'basket_court', 'teams'));
+        $games = Game::find($league->id)::paginate(10);
+
+        return view('league.show', compact('league', 'entity', 'manager', 'basket_court', 'teams', 'games'));
     }
 
     public function store(StoreLeague $request)
@@ -99,4 +102,5 @@ class LeagueController extends Controller
         $league->delete();
         return redirect()->route('entity.show', $entity);
     }
+
 }

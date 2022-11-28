@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class League extends Model
 {
@@ -39,8 +40,20 @@ class League extends Model
         return $this->hasOne('App\Models\BasketCourt');
     }
 
-    public function setSkillsAttribute($value)
-{
-     $this->attributes['team_gender'] = implode(', ', $value);
-}
+    public function setGenderAttribute($value)
+    {
+        $this->attributes['team_gender'] = implode(', ', $value);
+    }
+
+    protected function name(): Attribute
+    {
+        return new Attribute(
+            get: function ($value) {
+                return ucwords($value);
+            },
+            set: function ($value) {
+                return strtolower($value);
+            },
+        );
+    }
 }

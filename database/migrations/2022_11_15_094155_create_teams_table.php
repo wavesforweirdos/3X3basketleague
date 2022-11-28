@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('id_leagues')->constrained('leagues')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('league_id')->constrained('leagues')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

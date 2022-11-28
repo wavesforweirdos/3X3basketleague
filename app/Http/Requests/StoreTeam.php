@@ -24,18 +24,20 @@ class StoreTeam extends FormRequest
     public function rules()
     {
         return [
-            'id_leagues' => 'required',
             'name'  => 'required',
             'category_id' => 'required',
-            'first_name_1' => 'required',
-            'last_name_1' => 'required',
-            'email_1' => 'required|email:rfc,dns',
-            'first_name_2' => 'required',
-            'last_name_2' => 'required',
-            'email_2' => 'required|email:rfc,dns',
-            'first_name_3' => 'required',
-            'last_name_3' => 'required',
-            'email_3' => 'required|email:rfc,dns',
+            'first_name[0]' => 'required',
+            'first_name[1]' => 'required',
+            'first_name[2]' => 'required',
+            'last_name[0]' => 'required',
+            'last_name[1]' => 'required',
+            'last_name[2]' => 'required',
+            'birthdate[0]' => 'required',
+            'birthdate[1]' => 'required',
+            'birthdate[2]' => 'required',
+            'email[0]' => 'required',
+            'email[1]' => 'required',
+            'email[2]' => 'required',
         ];
     }
 }

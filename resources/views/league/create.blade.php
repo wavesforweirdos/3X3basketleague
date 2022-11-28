@@ -20,11 +20,12 @@
     <section class="bg-[#F4F7FF] py-14 lg:py-20 text-gray-600 body-font relative">
         <div class="container mx-auto">
             <div class="mt-10 md:mt-0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
-                <form action="{{route('league.store')}}" method="POST" class="px-10">
+                <form action="{{ route('league.store') }}" method="POST" class="px-10">
                     @csrf
                     <div class="">
                         <div class="px-2 py-8 sm:p-6">
-                            <h1 class="text-xl text-center font-bold leading-snug sm:text-xl sm:leading-snug md:text-[45px] md:leading-snug">
+                            <h1
+                                class="text-xl text-center font-bold leading-snug sm:text-xl sm:leading-snug md:text-[45px] md:leading-snug">
                             </h1>
                             {{-- League Info --}}
                             <div id="LeagueInfo">
@@ -59,29 +60,29 @@
                                     <hr class="mt-1 mb-5">
                                 </div>
                                 <div class="grid grid-cols-6 gap-6 mb-2">
-                                    <x-forms.input id='id_entities' type='number' placeholder='{{$entity}}'
-                                        class='sm:row-span-1 hidden' value='{{$entity}}'>
+                                    <x-forms.input id='id_entities' type='number' placeholder="{{ $entity }}"
+                                        class='sm:row-span-1 hidden' value="{{ $entity }}">
                                         id_entities
                                         @error('id_entities')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
                                     <x-forms.input id='name' type='text' placeholder='3X3 LLEFIÀ'
-                                        class='sm:row-span-1' value='{{old("name")}}'>
+                                        class='sm:row-span-1' value="{{ old('name') }}">
                                         Nombre
                                         @error('name')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='min_age' type='number' placeholder='0'
-                                        class='sm:row-span-1' value='{{old("min_age")}}'>
+                                    <x-forms.input id='min_age' type='number' placeholder='0' class='sm:row-span-1'
+                                        value="{{ old('min_age') }}">
                                         Edad mínima de los participantes
                                         @error('min_age')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
                                     <x-forms.input id='max_players' type='number' placeholder='16' min='3'
-                                        class='sm:row-span-1' value='{{old("max_players")}}'>
+                                        class='sm:row-span-1' value="{{ old('max_players') }}">
                                         Máximo de jugadores por equipo
                                         @error('max_players')
                                             <small class="text-primary">*{{ $message }}</small>
@@ -89,7 +90,8 @@
                                     </x-forms.input>
                                     <div class="col-span-6 sm:col-span-3">
                                         <fieldset>
-                                            <legend id="team_gender" class="block text-sm font-medium text-gray-700">Géneros aceptados
+                                            <legend id="team_gender" class="block text-sm font-medium text-gray-700">Géneros
+                                                aceptados
                                                 @error('team_gender')
                                                     <small class="text-primary">*{{ $message }}</small>
                                                 @enderror
@@ -97,27 +99,28 @@
                                             <div
                                                 class="col-span-6 sm:col-span-3 py-1 px-2 flex flex-row gap-2 align-middle">
                                                 <x-forms.checkbox id='team_gender[f]' legend='Femenino'> </x-forms.checkbox>
-                                                <x-forms.checkbox id='team_gender[m]' legend='Masculino'> </x-forms.checkbox>
+                                                <x-forms.checkbox id='team_gender[m]' legend='Masculino'>
+                                                </x-forms.checkbox>
                                                 <x-forms.checkbox id='team_gender[x]' legend='Mixto'> </x-forms.checkbox>
                                             </div>
                                         </fieldset>
                                     </div>
-                                    <x-forms.input id='registration_day' type='date'
-                                        class='sm:row-span-1' value='{{old("registration_day")}}'>
+                                    <x-forms.input id='registration_day' type='date' class='sm:row-span-1'
+                                        value="{{ old('registration_day') }}">
                                         Fecha límite de registro de equipos
                                         @error('registration_day')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='start_day' type='date'
-                                        class='sm:row-span-1' value='{{old("start_day")}}'>
+                                    <x-forms.input id='start_day' type='date' class='sm:row-span-1'
+                                        value="{{ old('start_day') }}">
                                         Fecha de inicio
                                         @error('start_day')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='end_day' type='date'
-                                        class='sm:row-span-1' value='{{old("end_day")}}'>
+                                    <x-forms.input id='end_day' type='date' class='sm:row-span-1'
+                                        value="{{ old('end_day') }}">
                                         Fecha fin de liga
                                         @error('end_day')
                                             <small class="text-primary">*{{ $message }}</small>
@@ -130,30 +133,33 @@
                                     <hr class="mb-4">
                                 </div>
                                 <div class="px-4 grid grid-cols-6 gap-6 mb-2">
-                                    <x-forms.input id='street' type='text'
-                                        placeholder='Avinguda del Doctor Bassols' class='sm:row-span-1' value='{{old("street")}}'>
+                                    <x-forms.input id='street' type='text' placeholder='Avinguda del Doctor Bassols'
+                                        class='sm:row-span-1' value="{{ old('street') }}">
                                         Calle
                                         @error('street')
-                                        <small class="text-primary">*{{ $message }}</small>
-                                    @enderror
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='number' type='number' placeholder='10' value='{{old("number")}}'>
+                                    <x-forms.input id='number' type='number' placeholder='10'
+                                        value="{{ old('number') }}">
                                         Número
                                         @error('number')
-                                        <small class="text-primary">*{{ $message }}</small>
-                                    @enderror
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='zip_code' type='number' placeholder='08911' value='{{old("zip_code")}}'>
+                                    <x-forms.input id='zip_code' type='number' placeholder='08911'
+                                        value="{{ old('zip_code') }}">
                                         Código postal
                                         @error('zip_code')
-                                        <small class="text-primary">*{{ $message }}</small>
-                                    @enderror
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='city' type='text' placeholder='Badalona' value='{{old("city")}}'>
+                                    <x-forms.input id='city' type='text' placeholder='Badalona'
+                                        value="{{ old('city') }}">
                                         Ciudad
                                         @error('city')
-                                        <small class="text-primary">*{{ $message }}</small>
-                                    @enderror
+                                            <small class="text-primary">*{{ $message }}</small>
+                                        @enderror
                                     </x-forms.input>
                                 </div>
                             </div>
@@ -165,12 +171,12 @@
                         class="inline-flex items-center justify-center rounded py-3 px-10 text-base font-medium text-primary bg-primary bg-opacity-20 transition duration-300 ease-in-out hover:bg-opacity-80 hover:text-white">
                         Cancelar
                     </button> --}}
-                    <button type="submit"
-                    class="inline-flex items-center justify-center rounded bg-primary py-3 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
-                    Guardar
-                </button>
-            </div>
-        </form>
+                        <button type="submit"
+                            class="inline-flex items-center justify-center rounded bg-primary py-3 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
+                            Guardar
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>

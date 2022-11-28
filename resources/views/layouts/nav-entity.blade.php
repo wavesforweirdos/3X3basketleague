@@ -30,13 +30,19 @@
                                 <li class="group relative">
                                     <a href="{{ route('entity.show' , $entity) }}"
                                         class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                                        Home
+                                        Entidad
                                     </a>
                                 </li>
                                 <li class="group relative">
-                                    <a href="#newLeague"
+                                    <a href="#oldLeagues"
                                         class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                                        Nueva liga
+                                        Ligas
+                                    </a>
+                                </li>
+                                <li class="group relative">
+                                    <a href="#teams"
+                                        class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
+                                        Equipos
                                     </a>
                                 </li>
                                 <?php 

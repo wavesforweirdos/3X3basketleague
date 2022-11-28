@@ -32,10 +32,11 @@ Route::get('league/create/{league}',[LeagueController::class ,'create'])->name('
 
 // --------- Rutas de Team ----------
 Route::resource('team', TeamController::class);
+Route::get('team/{id}',[TeamController::class ,'show'])->name('team.show');
 Route::get('team/create/{id}',[TeamController::class ,'create'])->name('team.create');
 
 // --------- Rutas de Player ----------
-Route::resource('player', PlayerController::class)->parameters(['jugador' => 'player'])->names('player');
+Route::resource('player', PlayerController::class)->names('player');
 
 
 // --------- Rutas de User ----------

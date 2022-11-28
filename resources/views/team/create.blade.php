@@ -19,11 +19,12 @@
     <!-- This is an example component -->
     <section class="bg-[#F4F7FF] py-14 lg:py-20 text-gray-600 body-font relative">
         <div class="container mx-auto">
-            <div class="mt-10 md:mt-0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
-                <form action="" method="POST" class="px-10">
+            <div class="mt-10 md:mt-v0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
+                <form action="{{ route('team.store') }}" method="POST" class="px-10">
                     @csrf
                     <div class="px-2 py-8 sm:p-6">
-                        <h1 class="text-xl text-center font-bold leading-snug sm:text-xl sm:leading-snug md:text-[45px] md:leading-snug">
+                        <h1
+                            class="text-xl text-center font-bold leading-snug sm:text-xl sm:leading-snug md:text-[45px] md:leading-snug">
                             {{ $league->name }}
                         </h1>
                         {{-- Team Info --}}
@@ -33,15 +34,12 @@
                                 <hr class="mt-1 mb-5">
                             </div>
                             <div class="grid grid-cols-6 gap-6 mb-2">
-                                <x-forms.input id='id_leagues' type='number' placeholder='{{$league}}'
-                                class='sm:row-span-1 hidden' value='{{$league}}'>
+                                <x-forms.input id='id_leagues' type='number' placeholder="{{ $league->id }}"
+                                    class='sm:row-span-1 hidden' value="{{ $league->id }}">
                                     id_entities
-                                    @error('id_leagues')
-                                        <small class="text-primary">*{{ $message }}</small>
-                                    @enderror
                                 </x-forms.input>
                                 <x-forms.input id='name' type='text' placeholder='los innombrables'
-                                class='sm:row-span-1' value='{{old("name")}}'>
+                                    class='sm:row-span-1' value="{{ old('name') }}">
                                     Nombre del equipo
                                     @error('name')
                                         <small class="text-primary">*{{ $message }}</small>
@@ -57,54 +55,57 @@
                                     @slot('message')
                                         Categoría
                                     @endslot
-                                        @error('category_id')
+                                    @error('category_id')
                                         <small class="text-primary">*{{ $message }}</small>
-                                            <option value="1">Senior femenino</option>
-                                            <option value="2">Senior masculino</option>
-                                            <option value="3">Senior mixto</option>
-                                            <option value="4">Junior femenino</option>
-                                            <option value="5">Junior masculino</option>
-                                            <option value="6">Junior mixto</option>
-                                            <option value="7">Infantil femenino</option>
-                                            <option value="8">Infantil masculino</option>
-                                            <option value="9">Infantil mixto</option>
-                                        @enderror
-                                    @endcomponent
+                                    @enderror
+                                    @if (str_contains($league->team_gender, 'f'))
+                                        <option value="1">Senior femenino</option>
+                                        <option value="4">Junior femenino</option>
+                                        <option value="7">Infantil femenino</option>
+                                    @endif
+                                    @if (str_contains($league->team_gender, 'm'))
+                                        <option value="2">Senior masculino</option>
+                                        <option value="5">Junior masculino</option>
+                                        <option value="8">Infantil masculino</option>
+                                    @endif
+                                    @if (str_contains($league->team_gender, 'x'))
+                                        <option value="3">Senior mixto</option>
+                                        <option value="6">Junior mixto</option>
+                                        <option value="9">Infantil mixto</option>
+                                    @endif
+                                @endcomponent
                             </div>
                             {{-- Players Info --}}
                             <div class="px-4 col-span-6 sm:col-span-3 mt-12">
-                                <h4 class="block text-sm font-medium text-gray-700">Jugadores</h4>
+                                <h4 class="block text-sm font-medium text-gray-700">Jugadores
+                                    <span class="text-gray-300 font-normal text-xs">(Se necesitan mínimo 3 jugadores por
+                                        equipo)</span>
+                                </h4>
                                 <hr class="mb-4">
                             </div>
-                            <div class="px-4 grid grid-cols-6 gap-x-6  gap-y-2 mb-2">
+                            <div class="flex flex-col">
                                 @for ($i = 0; $i < $league->max_players; $i++)
-                                    <label class='text-sm font-medium text-gray-700 pt-3 col-span-6'>Jugador {{1+$i}}</label>
-                    
-                                    <x-forms.input id='first_name_{{1+$i}}' type='text'
-                                    placeholder='Nombre' class='row-span-1 sm:col-span-1' value='{{old("first_name_{{1+$i}}")}}'>
-                                        @error('first_name_{{1+$i}}')
-                                            <small class="text-primary">*{{ $message }}</small>
-                                        @enderror
-                                    </x-forms.input>
-                                    <x-forms.input id='last_name_{{1+$i}}' type='text'
-                                        placeholder='Primer apellido' class='sm:row-span-1 sm:col-span-1' value='{{old("last_name_{{1+$i}}")}}'>
-                                        @error('last_name_{{1+$i}}')
-                                            <small class="text-primary">*{{ $message }}</small>
-                                        @enderror
-                                    </x-forms.input>
-                                    <x-forms.input id='birthdate_{{1+$i}}' type='date'
-                                        class='sm:row-span-1 sm:col-span-1' value='{{old("birthdate_{{1+$i}}")}}'>
-                                        @error('birthdate_{{1+$i}}')
-                                            <small class="text-primary">*{{ $message }}</small>
-                                        @enderror
-                                    </x-forms.input>
-                                    <x-forms.input id='email_{{1+$i}}' type='email_{{1+$i}}' placeholder='correo@example.com' value='{{old("email_{{1+$i}}")}}'>
-                                        @error('email_{{1+$i}}')
-                                        <small class="text-primary">*{{ $message }}</small>
-                                        @enderror
-                                    </x-forms.input>
-
-                                    @endfor
+                                    <label class='text-sm font-medium text-gray-700 pt-3 col-span-6'>
+                                        @if ($i <= 2)
+                                            @error('first_name[' . $i . ']')
+                                                <small class="text-primary">*{{ $message }}</small>
+                                            @enderror
+                                        @endif
+                                    </label>
+                                    <div class="w-full flex flex-col md:flex-row gap-2 justify-evenly items-center">
+                                        <div class="">
+                                            <p class="text-sm text-opacity-30">{{ 1 + $i }}</p>
+                                        </div>
+                                        <x-forms.input id='first_name[]' type="text" placeholder="Nombre" class="w-full md:w-1/3">
+                                        </x-forms.input>
+                                        <x-forms.input id='last_name[]' type="text" placeholder="Primer apellido" class="w-full md:w-1/3">
+                                        </x-forms.input>
+                                        <x-forms.input id='birthdate[]' type='date' class="w-full md:w-1/3">
+                                        </x-forms.input>
+                                        <x-forms.input id='email[]' type='email' placeholder='correo@example.com' class="w-full md:w-1/4">
+                                        </x-forms.input>
+                                    </div>
+                                @endfor
                             </div>
                         </div>
                     </div>
