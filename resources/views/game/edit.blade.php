@@ -18,12 +18,12 @@
 
     <!-- ===== Game Info -->
     <section id="infoGame" class="py-20">
-        <div class="bg-white my-6 mx-10 px-20 mt-12 font-sans ">
-            <div class="">
+        <div class="bg-white px-20 mt-12 font-sans ">
+            <div class="overflow-x-auto shadow-md rounded table-auto">
                 <form method="POST" action="{{ route('game.update', $game) }}" class="">
                     @csrf
                     @method('put')
-                    <table class="shadow-md rounded table-fixed">
+                    <table class="w-full">
                         <thead>
                             <tr
                                 class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal justify-center text-center">

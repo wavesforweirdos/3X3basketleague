@@ -16,17 +16,23 @@
 @section('content')
 
     {{-- Entity Info --}}
-    <section id="info" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+    <section id="infoEntity" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
         <div class="container">
             <div class="-mx-4 w-full flex flex-wrap gap-6 justify-center items-center">
                 <div class="wow fadeInUp overflow-hidden rounded mb-4 w-1/4" data-wow-delay=".1s">
-                    @if (str_contains($entity->photo, 'https://'))
-                        <img src="{{ $entity->photo }}" alt="image"
-                            class="object-cover object-center h-auto rounded-full" />
+                    @if ($entity->photo)
+                        @if (str_contains($entity->photo, 'https://'))
+                            <img src="{{ $entity->photo }}" alt="image"
+                                class="object-cover object-center h-auto rounded-full" />
+                        @else
+                            <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}" alt="image"
+                                class="object-cover object-center h-auto rounded-full" />
+                        @endif
                     @else
-                        <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}" alt="image"
-                            class="object-cover object-center h-auto rounded-full" />
+                        <img src="https://149368894.v2.pressablecdn.com/wp-content/uploads/2019/09/iStock-1018999828.jpg"
+                            alt="image" class="object-cover object-center h-auto rounded-full"/>
                     @endif
+
                 </div>
                 <div class="flex">
                     <div id="info">
@@ -57,7 +63,7 @@
                                 </p>
                             </div>
                             <div id="editInfo" class="w-full flex flex-end">
-                                <a href="{{ route('entity.edit' , $entity) }}"
+                                <a href="{{ route('entity.edit', $entity) }}"
                                     class="rounded bg-primary bg-opacity-20 py-2 px-5 text-xs font-medium text-primary text-center hover:bg-opacity-100 hover:text-white md:mr-4 lg:mr-2 xl:mr-4">
                                     Editar
                                 </a>
@@ -96,7 +102,7 @@
                             disfrutar!
                         </p>
                         <div class="w-full">
-                            <a href="{{ route('league.create', $entity )}}"
+                            <a href="{{ route('league.create', $entity) }}"
                                 class="mt-10 inline-block rounded-full border border-primary bg-transparent py-4 px-11 text-center text-base font-medium text-primary transition duration-300 ease-in-out hover:border-primary hover:bg-primary hover:text-white">
                                 Crear liga
                             </a>
@@ -137,7 +143,7 @@
                                 <a href="{{ route('league.show', $league) }}" class="block">
                                     <img src="
                                     <?php
-                                    ($league->logo)? $src=$league->logo : $src=fake()->imageUrl($width = 250, $height = 250, $league->name);
+                                    $league->logo ? ($src = $league->logo) : ($src = fake()->imageUrl($width = 250, $height = 250, $league->name));
                                     echo $src;
                                     ?>" alt="image"
                                         class="w-full transition group-hover:rotate-6 group-hover:scale-125" />

@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 @section('title', 'Entity Name | 3KLeague')
 @section('navigation')
-    @include('layouts.nav-entity')
+    @include('layouts.nav-league')
 @endsection
 
 @section('banner')
@@ -216,7 +216,7 @@
         $lenght = count($teams);
         if ($lenght){
         ?>
-    <section id="teams" class="pt-20 pb-10 lg:pt-[120px] lg:pb-[50px] bg-[#f3f4fe]">
+    <section id="infoTeams" class="pt-20 pb-10 lg:pt-[120px] lg:pb-[50px] bg-[#f3f4fe]">
         <div class="container">
             <div class="-mx-4 flex flex-wrap">
                 <div class="w-full px-4">
@@ -261,10 +261,10 @@
                                 <div class="text-base text-body-color">
                                     <ul class="text-base text-body-color">
                                         @foreach ($team->players as $player)
-                                            <a title="Perfil de {{ $player->first_name }}"
+                                            <div title="Perfil de {{ $player->first_name }}"
                                                 href="{{ route('player.show', $player) }}">
                                                 <li>{{ $player->first_name }} {{ $player->last_name }}</li>
-                                            </a>
+                                            </div>
                                         @endforeach
                                     </ul>
                                 </div>

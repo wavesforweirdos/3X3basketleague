@@ -38,7 +38,6 @@ class StoreLeague extends FormRequest
             'city'  => 'required',
             'team_gender' => 'required',
             'gender.*' => 'in:Femenino,Masculino,Mixto',
-            'image' => File::image()->min(900)->max(12 * 1024)->dimensions(Rule::dimensions()->maxWidth(500)->maxHeight(500)),
         ];
     }
 }

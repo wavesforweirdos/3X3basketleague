@@ -31,12 +31,12 @@ Route::get('/', [EntityController::class, 'index'])->name('home');
 Route::resource('entidad', EntityController::class)->parameters(['entidad' => 'entity'])->names('entity');
 
 // --------- Rutas de League ----------
-Route::resource('league', LeagueController::class);
+Route::resource('league', LeagueController::class)->names('league');
 Route::get('league/{id}', [LeagueController::class, 'show'])->name('league.show');
 Route::get('league/create/{league}', [LeagueController::class, 'create'])->name('league.create');
 
 // --------- Rutas de Team ----------
-Route::resource('team', TeamController::class);
+Route::resource('team', TeamController::class)->names('team');
 Route::get('team/{id}', [TeamController::class, 'show'])->name('team.show');
 Route::get('team/create/{id}', [TeamController::class, 'create'])->name('team.create');
 

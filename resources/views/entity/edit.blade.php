@@ -20,7 +20,7 @@
     <section class="bg-[#F4F7FF] py-14 lg:py-20 text-gray-600 body-font relative">
         <div class="container mx-auto">
             <div class="mt-10 p-10 md:mt-0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
-                <form action="{{ route('entity.update' , $entity) }}" method="POST">
+                <form action="{{ route('entity.update', $entity) }}" method="POST">
                     @csrf
                     @method('put')
                     <div class="">
@@ -34,19 +34,22 @@
                                 </div>
                                 <div class="grid grid-cols-6 gap-6">
 
-                                    <x-forms.input id='first_name' type='text' value='{{ old("first_name", $manager->first_name) }}'>
+                                    <x-forms.input id='first_name' type='text' placeholder='Carles'
+                                        value="{{ old('first_name', $manager->first_name) }}">
                                         Nombre
                                         @error('first_name')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='last_name' type='text' value='{{ old("last_name", $manager->last_name) }}'>
+                                    <x-forms.input id='last_name' type='text' placeholder='Esteve'
+                                        value="{{ old('last_name', $manager->last_name) }}">
                                         Primer apellido
                                         @error('last_name')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='phone' type='phone' value='{{ old("phone", $manager->phone) }}'>
+                                    <x-forms.input id='phone' type='phone' placeholder='680379541'
+                                        value="{{ old('phone', $manager->phone) }}">
                                         Móvil
                                         @error('phone')
                                             <small class="text-primary">*{{ $message }}</small>
@@ -56,12 +59,12 @@
                                         <x-slot:message>
                                             Cargo
                                         </x-slot:message>
-                                        <option hidden value="{{ $manager->state }}" selected style="text-transform: capitalize">
-                                            {{ old("state", $manager->state) }}</option>
+                                        <option hidden value="{{ $manager->state }}" selected
+                                            style="text-transform: capitalize">
+                                            {{ old('state', $manager->state) }}</option>
                                         <option value="1">Presidente</option>
                                         <option value="2">Director técnico</option>
                                     </x-forms.select>
-
                                 </div>
                             </div>
                             {{-- Entity Info --}}
@@ -86,14 +89,18 @@
                                         <div class="text-center flex flex-col justify-center items-center">
                                             <!-- Current Profile Photo -->
                                             <div class="mt-2 " x-show="! photoPreview">
-                                                @if (str_contains($entity->photo, 'https://'))
-                                                <img src="{{ $entity->photo }}" alt="image"
-                                                class="w-20 h-20 rounded-full shadow" />
-                                            @else
-                                                <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}" alt="image"
-                                                class="w-20 h-20 rounded-full shadow" />
-                                            @endif
-                                            {{-- <img src="{{ $entity->photo }}" class="w-20 h-20 rounded-full shadow"> --}}
+                                                @if ($entity->photo)
+                                                    @if (str_contains($entity->photo, 'https://'))
+                                                        <img src="{{ $entity->photo }}" alt="image"
+                                                            class="w-20 h-20 rounded-full shadow" />
+                                                    @else
+                                                        <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}"
+                                                            alt="image" class="w-20 h-20 rounded-full shadow" />
+                                                    @endif
+                                                @else
+                                                    <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
+                                                        alt="image" class="w-20 h-20 rounded-full shadow" />
+                                                @endif
                                             </div>
                                             <!-- New Profile Photo Preview -->
                                             <div class="mt-2" x-show="photoPreview" style="display: none;">
@@ -108,46 +115,52 @@
                                                 x-on:click.prevent="$refs.photo.click()">
                                                 Seleccionar archivo
                                             </button>
+                                            @error('photo')
+                                                <small class="text-primary">*{{ $message }}</small>
+                                            @enderror
 
-                                            
                                         </div>
                                     </div>
 
-                                    <x-forms.input id='entity_name' type='text' value='{{ old("entity_name", $entity->entity_name) }}'
-                                        class='sm:row-span-1'>
+                                    <x-forms.input id='entity_name' type='text'
+                                        value="{{ old('entity_name', $entity->entity_name) }}" class='sm:row-span-1'>
                                         Nombre
                                         @error('entity_name')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='foundation_year' type='number' value='{{ old("foundation_year", $entity->foundation_year) }}'>
+                                    <x-forms.input id='foundation_year' type='number'
+                                        value="{{ old('foundation_year', $entity->foundation_year) }}">
                                         Año de fundación
                                         @error('foundation_year')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='entity_phone' type='tel' value='{{ old("entity_phone", $entity->phone) }}'>
+                                    <x-forms.input id='entity_phone' type='tel'
+                                        value="{{ old('entity_phone', $entity->phone) }}">
                                         Móvil o teléfono
                                         @error('entity_phone')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='email' type='email' value='{{ old("email", $entity->email) }}'>
+                                    <x-forms.input id='email' type='email'
+                                        value="{{ old('email', $entity->email) }}">
                                         Correo electrónico
                                         @error('email')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='web' type='text' value='{{ old("web", $entity->web) }}'>
+                                    <x-forms.input id='web' type='text' value="{{ old('web', $entity->web) }}">
                                         Web
                                     </x-forms.input>
-                                    <x-forms.input id='country' type='text' value='{{ old("country", $entity->country) }}'>
+                                    <x-forms.input id='country' type='text'
+                                        value="{{ old('country', $entity->country) }}">
                                         País
                                         @error('country')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='city' type='text' value='{{ old("city", $entity->city) }}'>
+                                    <x-forms.input id='city' type='text' value="{{ old('city', $entity->city) }}">
                                         Ciudad
                                         @error('city')
                                             <small class="text-primary">*{{ $message }}</small>

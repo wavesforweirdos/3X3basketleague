@@ -143,7 +143,9 @@
                                     Mágnifica herramienta para administrar una Liga de Baloncesto 3X3
                                 </h2>
                                 <p class="mb-9 text-base leading-relaxed text-body-color">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae quasi voluptas obcaecati quia. Cupiditate quas reprehenderit sit harum, asperiores natus aliquam maiores! Atque incidunt soluta nisi reprehenderit, cumque dolorum fugit.
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae quasi voluptas
+                                    obcaecati quia. Cupiditate quas reprehenderit sit harum, asperiores natus aliquam
+                                    maiores! Atque incidunt soluta nisi reprehenderit, cumque dolorum fugit.
                                 </p>
                                 <p class="mb-9 text-base leading-relaxed text-body-color">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nulla voluptates autem
@@ -185,12 +187,18 @@
                     <a class="w-full px-4 sm:w-1/2 lg:w-1/4" href="{{ route('entity.show', $entity) }}">
                         <div class="wow fadeInUp mb-10" data-wow-delay=".1s">
                             <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
-                                @if (str_contains($entity->photo, 'https://'))
-                                    <img src="{{ $entity->photo }}" alt="image" class="w-full rounded-full" />
+                                @if ($entity->photo)
+                                    @if (str_contains($entity->photo, 'https://'))
+                                        <img src="{{ $entity->photo }}" alt="image" class="w-full rounded-full" />
+                                    @else
+                                        <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}"
+                                            alt="image" class="w-full rounded-full" />
+                                    @endif
                                 @else
-                                    <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}"
-                                        alt="image" class="w-full rounded-full" />
+                                    <img src="https://149368894.v2.pressablecdn.com/wp-content/uploads/2019/09/iStock-1018999828.jpg"
+                                        alt="image" class="w-full rounded-full shadow" />
                                 @endif
+
                             </div>
                             <div class="text-center text-sm">
                                 <h4 class="text-lg font-semibold text-dark">
@@ -400,8 +408,8 @@
                     Ver ligas
                 </a>
             </div> --}}
-        </div>
-    </section> 
+    </div>
+    </section>
     <!-- ====== Leagues Section End -->
 
     <!-- ====== Contact Start ====== -->

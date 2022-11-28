@@ -20,7 +20,7 @@
     <section class="bg-[#F4F7FF] py-14 lg:py-20 text-gray-600 body-font relative">
         <div class="container mx-auto">
             <div class="mt-10 md:mt-v0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
-                <form method="POST" action="{{ route('team.update', $team) }}" class="px-10">
+                <form action="{{ route('team.update', $team) }}" method="POST">
                     @csrf
                     @method('put')
                     <div class="px-2 py-8 sm:p-6">
@@ -74,6 +74,7 @@
                                     @endif
                                 @endcomponent
                             </div>
+
                             {{-- Players Info --}}
                             <div class="px-4 col-span-6 sm:col-span-3 mt-12">
                                 <h4 class="block text-sm font-medium text-gray-700">Jugadores</h4>
@@ -84,7 +85,7 @@
                                 @foreach ($players as $player)
                                     <label class='w-full text-sm font-medium text-gray-700 pt-3'>
                                         @if ($i <= 2)
-                                            @error('first_name[' . $i . ']')
+                                            @error('players[{{ $i }}][id]')
                                                 <small class="text-primary">*{{ $message }}</small>
                                             @enderror
                                         @endif
@@ -97,7 +98,8 @@
                                             value="{{ old('player[id]', $player->id) }}">
                                         </x-forms.input>
                                         <x-forms.input id='players[{{ $i }}][first_name]' type="text"
-                                            placeholder="Nombre" value="{{ old('first_name', $player->first_name) }}" class="w-full md:w-1/3">
+                                            placeholder="Nombre" value="{{ old('first_name', $player->first_name) }}"
+                                            class="w-full md:w-1/3">
                                         </x-forms.input>
                                         <x-forms.input id='players[{{ $i }}][last_name]' type="text"
                                             placeholder="Primer apellido"
@@ -110,59 +112,50 @@
                                             class="w-full" placeholder='correo@example.com'
                                             value="{{ old('email', $player->email) }}" class="w-full md:w-1/4">
                                         </x-forms.input>
-                                        <form action="{{ route('player.destroy', $player) }}" method="POST"
-                                            class="justify-center items-center align-middle text-center">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit">
-                                                <i class="fa-solid fa-xmark hover:text-[#f3f4fe]"></i>
-                                            </button>
-                                        </form>
                                     </div>
                                     <?php $i++; ?>
                                 @endforeach
                             </div>
-                        </div>
-                        <?php
+                            <?php
                                     $restPlayers = $league->max_players - count($players);
                                     if ($restPlayers > 0){?>
-                        <div class="px-4 col-span-6 sm:col-span-3 mt-12">
-                            <h4 class="block text-sm font-medium text-gray-700">Más jugadores:</h4>
-                            <hr class="mb-4">
-                        </div>
-                        <div class="px-4 grid grid-cols-6 gap-x-6 gap-y-2 mb-2">
-                            <?php
+                            <div class="px-4 col-span-6 sm:col-span-3 mt-12">
+                                <h4 class="block text-sm font-medium text-gray-700">Más jugadores:</h4>
+                                <hr class="mb-4">
+                            </div>
+                            <div class="px-4 grid grid-cols-6 gap-x-6 gap-y-2 mb-2">
+                                <?php
                                 for ($j=0; $j < $restPlayers; $j++) { ?>
-                            <x-forms.input id='players[{{ $i }}][first_name]' type="text"
-                                placeholder="Nombre" class="sm:row-span-1 sm:col-span-1">
-                            </x-forms.input>
-                            <x-forms.input id='players[{{ $i }}][last_name]' type="text"
-                                placeholder="Primer apellido" class="sm:row-span-1 sm:col-span-1">
-                            </x-forms.input>
-                            <x-forms.input id='players[{{ $i }}][birthdate]' type='date'
-                                class='sm:row-span-1 sm:col-span-1'>
-                            </x-forms.input>
-                            <x-forms.input id='players[{{ $i }}][email]' type='email'
-                                placeholder='correo@example.com'>
-                            </x-forms.input>
+                                <x-forms.input id='players[{{ $i }}][first_name]' type="text"
+                                    placeholder="Nombre" class="sm:row-span-1 sm:col-span-1">
+                                </x-forms.input>
+                                <x-forms.input id='players[{{ $i }}][last_name]' type="text"
+                                    placeholder="Primer apellido" class="sm:row-span-1 sm:col-span-1">
+                                </x-forms.input>
+                                <x-forms.input id='players[{{ $i }}][birthdate]' type='date'
+                                    class='sm:row-span-1 sm:col-span-1'>
+                                </x-forms.input>
+                                <x-forms.input id='players[{{ $i }}][email]' type='email'
+                                    placeholder='correo@example.com'>
+                                </x-forms.input>
 
-                            <?php $i++; }}
+                                <?php $i++; }}
                                 ?>
+                            </div>
+                            <div id="saveInfo" class="flex gap-2 justify-center p-6 bg-white text-center sm:px-6">
+                                {{-- <button action="{{ route('league') }}"
+                                        class="inline-flex items-center justify-center rounded py-3 px-10 text-base font-medium text-primary bg-primary bg-opacity-20 transition duration-300 ease-in-out hover:bg-opacity-80 hover:text-white">
+                                        Cancelar
+                                    </button> --}}
+                                <button type="submit"
+                                    class="inline-flex items-center justify-center rounded bg-primary py-3 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
+                                    Guardar
+                                </button>
+                            </div>
                         </div>
                     </div>
+                </form>
             </div>
-            <div id="saveInfo" class="flex gap-2 justify-center p-6 bg-white text-center sm:px-6">
-                {{-- <button action="{{ route('league') }}"
-                        class="inline-flex items-center justify-center rounded py-3 px-10 text-base font-medium text-primary bg-primary bg-opacity-20 transition duration-300 ease-in-out hover:bg-opacity-80 hover:text-white">
-                        Cancelar
-                    </button> --}}
-                <button type="submit"
-                    class="inline-flex items-center justify-center rounded bg-primary py-3 px-12 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark">
-                    Guardar
-                </button>
-            </div>
-            </form>
-        </div>
         </div>
     </section>
     <!-- ====== Forms Section End -->

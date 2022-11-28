@@ -1,5 +1,5 @@
 <!-- ====== Footer Section Start -->
-<footer class="wow fadeInUp relative z-10 pt-20 pb-20 bg-black" data-wow-delay=".15s">
+<footer class="wow fadeInUp relative z-10 pt-20 pb-12 bg-black" data-wow-delay=".15s">
     <div class="border-t border-opacity-10 border-gray-700">
         <div class="container">
             <div class="w-full grid grid-cols-3 grid-rows-3 gap-2 justify-center items-center">

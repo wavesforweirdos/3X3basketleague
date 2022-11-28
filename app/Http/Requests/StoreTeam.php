@@ -26,18 +26,6 @@ class StoreTeam extends FormRequest
         return [
             'name'  => 'required',
             'category_id' => 'required',
-            'first_name[0]' => 'required',
-            'first_name[1]' => 'required',
-            'first_name[2]' => 'required',
-            'last_name[0]' => 'required',
-            'last_name[1]' => 'required',
-            'last_name[2]' => 'required',
-            'birthdate[0]' => 'required',
-            'birthdate[1]' => 'required',
-            'birthdate[2]' => 'required',
-            'email[0]' => 'required',
-            'email[1]' => 'required',
-            'email[2]' => 'required',
         ];
     }
 }

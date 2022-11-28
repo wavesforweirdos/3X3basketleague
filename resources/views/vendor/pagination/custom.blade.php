@@ -18,7 +18,7 @@
                 </p>
             </div>
         </div>
-        <div class="flex justify-between flex-1 gap-2 sm:hidden">
+        <div class="flex justify-end flex-1 gap-2 sm:hidden">
             @if ($paginator->onFirstPage())
                 <span
                     class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 rounded-md">

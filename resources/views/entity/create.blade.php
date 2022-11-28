@@ -2,8 +2,8 @@
 
 @section('title', 'Entity | 3KLeague')
 @section('navigation')
-{{$entity = '';}}
-    @include('layouts.nav-entity')
+    {{ $entity = '' }}
+    @include('layouts.nav-simply')
 @endsection
 
 @section('banner')
@@ -33,19 +33,22 @@
                                     <hr class="mt-1 mb-5">
                                 </div>
                                 <div class="grid grid-cols-6 gap-6">
-                                    <x-forms.input id='first_name' type='text' placeholder='Carles' value='{{old("first_name")}}'>
+                                    <x-forms.input id='first_name' type='text' placeholder='Carles'
+                                        value="{{ old('first_name') }}">
                                         Nombre
                                         @error('first_name')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='last_name' type='text' placeholder='Esteve' value='{{old("last_name")}}'>
+                                    <x-forms.input id='last_name' type='text' placeholder='Esteve'
+                                        value="{{ old('last_name') }}">
                                         Primer apellido
                                         @error('last_name')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='phone' type='phone' placeholder='680379541' value='{{old("phone")}}'>
+                                    <x-forms.input id='phone' type='phone' placeholder='680379541'
+                                        value="{{ old('phone') }}">
                                         Móvil
                                         @error('phone')
                                             <small class="text-primary">*{{ $message }}</small>
@@ -104,41 +107,47 @@
                                         </div>
                                     </div>
 
-                                    <x-forms.input id='entity_name' type='text' placeholder='U. B. Llefià'  value='{{old("entity_name")}}'
-                                        class='sm:row-span-1'>
+                                    <x-forms.input id='entity_name' type='text' placeholder='U. B. Llefià'
+                                        value="{{ old('entity_name') }}" class='sm:row-span-1'>
                                         Nombre
                                         @error('entity_name')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='foundation_year' type='number' placeholder='1978'  value='{{old("foundation_year")}}'>
+                                    <x-forms.input id='foundation_year' type='number' placeholder='1978'
+                                        value="{{ old('foundation_year') }}">
                                         Año de fundación
                                         @error('foundation_year')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='entity_phone' type='tel' placeholder='685279187' value='{{old("entity_phone")}}'>
+                                    <x-forms.input id='entity_phone' type='tel' placeholder='685279187'
+                                        value="{{ old('entity_phone') }}">
                                         Móvil o teléfono
                                         @error('entity_phone')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='email' type='email' placeholder='info@entity.com' value='{{old("email")}}'>
+                                    <x-forms.input id='email' type='email' placeholder='info@entity.com'
+                                        value="{{ old('email') }}">
                                         Correo electrónico
                                         @error('email')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='web' type='text' placeholder='http://www.entity.com'>
+                                    <x-forms.input id='web' type='text' placeholder='http://www.entity.com'
+                                        value="{{ old('web') }}">
                                         Web
                                     </x-forms.input>
-                                    <x-forms.input id='country' type='text' placeholder='Spain' value='{{old("country")}}'>
+                                    <x-forms.input id='country' type='text' placeholder='Spain'
+                                        value="{{ old('country') }}">
                                         País
                                         @error('country')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
                                     </x-forms.input>
-                                    <x-forms.input id='city' type='text' placeholder='Barcelona' value='{{old("city")}}'>
+                                    <x-forms.input id='city' type='text' placeholder='Barcelona'
+                                        value="{{ old('city') }}">
                                         Ciudad @error('city')
                                             <small class="text-primary">*{{ $message }}</small>
                                         @enderror
