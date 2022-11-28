@@ -2,7 +2,7 @@
 
 @section('title', 'Entity | 3KLeague')
 @section('navigation')
-    @include('layouts.nav-home')
+    @include('layouts.nav-simply2')
 @endsection
 
 @section('banner')
@@ -20,7 +20,7 @@
     <section class="bg-[#F4F7FF] py-14 lg:py-20 text-gray-600 body-font relative">
         <div class="container mx-auto">
             <div class="mt-10 md:mt-v0 md:col-span-2 shadow bg-white overflow-hidden sm:rounded-md">
-                <form action="{{ route('team.update', $team) }}" method="POST">
+                <form action="{{ route('team.update', $team) }}" method="POST" class="px-10">
                     @csrf
                     @method('put')
                     <div class="px-2 py-8 sm:p-6">

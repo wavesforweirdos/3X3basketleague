@@ -12,7 +12,7 @@
         <x-slot name='subtitle'>
             Rellena el formulario para registrar tu entidad
         </x-slot>
-    </x-banner>
+    </x-banner> 
 @endsection
 
 @section('content')

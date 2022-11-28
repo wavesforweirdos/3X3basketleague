@@ -28,7 +28,7 @@ Route::get('/', [EntityController::class, 'index'])->name('home');
 
 
 // --------- Rutas de Entity ----------
-Route::resource('entidad', EntityController::class)->parameters(['entidad' => 'entity'])->names('entity');
+Route::resource('entity', EntityController::class)->names('entity');
 
 // --------- Rutas de League ----------
 Route::resource('league', LeagueController::class)->names('league');
@@ -37,14 +37,15 @@ Route::get('league/create/{league}', [LeagueController::class, 'create'])->name(
 
 // --------- Rutas de Team ----------
 Route::resource('team', TeamController::class)->names('team');
-Route::get('team/{id}', [TeamController::class, 'show'])->name('team.show');
-Route::get('team/create/{id}', [TeamController::class, 'create'])->name('team.create');
+Route::get('league/{league}/team', [TeamController::class, 'show'])->name('team.show');
+Route::get('league/{league}/team/create', [TeamController::class, 'create'])->name('team.create');
 
 // --------- Rutas de Player ----------
 Route::resource('player', PlayerController::class)->names('player');
 
 // --------- Rutas de Game ----------
 Route::resource('game', GameController::class)->names('game');
+Route::get('game/create/{league}', [GameController::class, 'create'])->name('game.create');
 
 
 // --------- Rutas de User ----------

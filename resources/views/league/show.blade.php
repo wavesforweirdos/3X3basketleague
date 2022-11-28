@@ -493,7 +493,7 @@
                 <div class="w-full px-4">
                     <div class="mx-auto max-w-[620px] text-center">
                         <div class="w-full flex gap-4 justify-center items-center">
-                            <a href="{{ route('team.create', $league) }}"
+                            <a href="{{ route('game.create', $league) }}"
                                 class="mt-10 inline-block rounded-full border border-primary bg-transparent py-4 px-11 text-center text-base font-medium text-primary transition duration-300 ease-in-out hover:border-primary hover:bg-primary hover:text-white">
                                 Agregar partido
                             </a>

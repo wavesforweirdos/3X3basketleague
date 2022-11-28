@@ -54,7 +54,7 @@
                 <div class="pt-4 col-span-3 md:col-span-1 w-full justify-center md:justify-end items-center">
                     <p class="text-base text-right text-[#f3f4fe]">
                         Diseñado y Desarrollado por
-                        <a href="https://wavesforweirdos.com" rel="nofollow noopner" target="_blank"
+                        <a href="http://www.wavesforweirdos.com/" rel="nofollow noopner" target="_blank"
                             class="text-primary hover:underline">
                             wavesforweirdos
                         </a>

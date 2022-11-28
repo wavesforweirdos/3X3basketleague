@@ -30,7 +30,7 @@
                         @endif
                     @else
                         <img src="https://149368894.v2.pressablecdn.com/wp-content/uploads/2019/09/iStock-1018999828.jpg"
-                            alt="image" class="object-cover object-center h-auto rounded-full"/>
+                            alt="image" class="object-cover object-center h-auto rounded-full" />
                     @endif
 
                 </div>
@@ -189,54 +189,11 @@
                                         echo $strGender;
                                     @endphp
                                 </p>
-                                <div id="editLeague" class="w-full flex flex-row pt-3">
-                                    @php
-                                        
-                                        $today = new DateTime();
-                                        $start_day = new DateTime($league->start_day);
-                                        $end_day = new DateTime($league->end_day);
-                                        
-                                        $diff = $start_day->diff($today); //diferencia entre el dia actual y el inicio de la liga
-                                        $leagueDiff = $end_day->diff($today); //diferencia entre el inicio de la liga y el fin de esta
-                                        
-                                        if ($diff->invert && $diff->format('%d') >= 14) {
-                                            //Quedan más de 2 semanas para que empiece el torneo, aun se pueden inscribir (Inscribir equipo)
-                                            $button =
-                                                '<a href="/team/create/' .
-                                                $entity->id .
-                                                '" class="rounded bg-primary bg-opacity-20 py-2 px-5 text-xs font-medium text-primary text-center hover:bg-opacity-100 hover:text-white md:mr-4 lg:mr-2 xl:mr-4">
-                                                    Inscribir equipo
-                                                    </a>';
-                                            echo $button;
-                                        } elseif ($leagueDiff->invert && $diff->format('%d') < 14) {
-                                            //Ha empezado la liga por lo que los equipos ya estan inscritos (Ver equipos) y el calendario de partidos esta establecido (Ver calendario)
-                                            $button =
-                                                ' <a href="/team/create/' .
-                                                $entity->id .
-                                                '" class="rounded bg-primary bg-opacity-20 py-2 px-5 text-xs font-medium text-primary text-center hover:bg-opacity-100 hover:text-white md:mr-4 lg:mr-2 xl:mr-4">
-                                                    Ver equipos
-                                                    </a>
-                                                <a href="/team/create/' .
-                                                $entity->id .
-                                                '" class="rounded bg-primary bg-opacity-20 py-2 px-5 text-xs font-medium text-primary text-center hover:bg-opacity-100 hover:text-white md:mr-4 lg:mr-2 xl:mr-4">
-                                                    Ver calendario
-                                                    </a>
-                                                ';
-                                            echo $button;
-                                        } elseif (!$leagueDiff->invert) {
-                                            //La liga ya ha terminado por lo que podemos ver la clasificacion final (Ver clasificacion) y el resultado de los partidos (Ver resultados)
-                                            $button =
-                                                '<a href="/team/create/' .
-                                                $entity->id .
-                                                '" class="rounded bg-primary bg-opacity-20 py-2 px-5 text-xs font-medium text-primary text-center hover:bg-opacity-100 hover:text-white md:mr-4 lg:mr-2 xl:mr-4">
-                                            Ver calendario </a>
-                                            <a href="/team/create/' .
-                                                $entity->id .
-                                                '" class="rounded bg-primary bg-opacity-20 py-2 px-5 text-xs font-medium text-primary text-center hover:bg-opacity-100 hover:text-white md:mr-4 lg:mr-2 xl:mr-4">
-                                            Ver clasificacion </a>';
-                                            echo $button;
-                                        }
-                                    @endphp
+                                <div id="veiwLeague" class="w-full flex flex-row pt-3">
+                                    <a href="{{ route('league.show', $league) }} "
+                                        class="rounded bg-primary bg-opacity-20 py-2 px-5 text-xs font-medium text-primary text-center hover:bg-opacity-100 hover:text-white md:mr-4 lg:mr-2 xl:mr-4">
+                                        Ver liga
+                                    </a>
                                 </div>
                             </div>
                         </div>

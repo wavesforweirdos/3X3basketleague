@@ -23,15 +23,19 @@ class GameController extends Controller
     public function create($league)
     {
         $league = League::find($league);
-        return view('game.create', compact('league'));
+        $referees = Referee::all();
+        return view('game.create', compact('league','referees'));
     }
 
-    public function store($request)
+    public function show()
     {
-        return $request;
+        return view('game.create');
+    }
+
+    public function store(StoreGame $request)
+    {
         $game = Game::create($request->all());
         $league = League::find($game->league_id);
-
         return redirect()->route('league.show', $league);
     }
 

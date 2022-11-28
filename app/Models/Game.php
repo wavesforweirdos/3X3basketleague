@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Game extends Model
 {
     use HasFactory;
-    protected $fillable = ['league_id', 'id_teams_local', 'id_teams_visiting', 'start_time', 'id_referees', 'state'];
+    protected $fillable = ['league_id', 'id_teams_local', 'id_teams_visiting', 'start_time', 'id_referees', 'state', 'score_local', 'score_visiting'];
     public $timestamps = false;
 
     //relación uno a muchos inversa

@@ -6,7 +6,6 @@
 @section('banner')
     @include('layouts.hero-home')
 @endsection
-
 @section('content')
     <!-- ====== Features Section Start -->
     <section id="features" class="pt-20 pb-8 lg:pt-[120px] lg:pb-[70px]">

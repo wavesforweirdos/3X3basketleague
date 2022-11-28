@@ -2,7 +2,7 @@
 
 @section('title', 'Entity | 3KLeague')
 @section('navigation')
-    @include('layouts.nav-home')
+    @include('layouts.nav-simply2')
 @endsection
 
 @section('banner')

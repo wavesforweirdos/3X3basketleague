@@ -27,7 +27,7 @@ class StoreGame extends FormRequest
             'league_id' => 'required',
             'start_time' => 'required',
             'id_teams_local' => 'required',
-            'id_teams_visiting' => 'required',
+            'id_teams_visiting' => 'required|different:id_teams_local',
             'id_referees' => 'required',
             'state' => 'required',
         ];

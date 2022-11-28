@@ -10,7 +10,7 @@
     <x-banner>
         Liga 3X3 {{ $league->name }}
         <x-slot name='subtitle'>
-            Calendario y resultados
+            Agregar partido al calendario (con o sin resultados)
         </x-slot>
     </x-banner>
 @endsection
@@ -18,14 +18,14 @@
 @section('content')
 
     <!-- ===== Game Info -->
+    @extends('layouts.basic')
     <section id="infoGame" class="overflow-x-auto pt-20 pb-10">
         <div class="container">
             <div class=" bg-white flex items-center justify-center overflow-x-scroll lg:overflow-hidden p-4">
                 <div class="w-full lg:w-5/6">
                     <div class="bg-white my-6 font-sans">
-                        <form method="POST" action="{{ route('game.update', $game) }}">
+                        <form method="POST" action="{{ route('game.store') }}">
                             @csrf
-                            @method('put')
                             <table class="min-w-max w-full shadow-md rounded table-auto">
                                 <thead>
                                     <tr
@@ -48,7 +48,7 @@
                                         <td class="py-3 text-left whitespace-nowrap">
                                             <div class="flex items-center justify-center">
                                                 <input id="start_time" name="start_time" type="datetime-local"
-                                                    value="{{ old('start_time', $game->start_time) }}">
+                                                    value="{{ old('start_time') }}">
                                                 @error('start_time')
                                                     <small class="text-primary text-lg pl-1">*</small>
                                                 @enderror
@@ -59,8 +59,6 @@
                                             <div class="flex items-center justify-end">
                                                 <label for="id_teams_local"></label> <select id="id_teams_local"
                                                     name="id_teams_local">
-                                                    <option hidden value="{{ $game->id_teams_local->id }}">
-                                                        {{ $game->id_teams_local->name }}</option>
                                                     @foreach ($league->teams as $team)
                                                         <option value="{{ $team->id }}">{{ $team->name }}</option>
                                                     @endforeach
@@ -74,9 +72,7 @@
                                         <td class="py-3 text-center">
                                             <div class="flex items-center justify-center">
                                                 <input id="score_local" name="score_local" type="number"
-                                                    class="font-bold text-lg text-center
-                                        @if ($game->score_local > $game->score_visiting) text-primary @endif "
-                                                    value="{{ old('score_local', $game->score_local) }}">
+                                                    class="font-bold text-lg text-center" value="{{ old('score_local') }}">
                                             </div>
                                         </td>
                                         {{-- separación visual --}}
@@ -89,10 +85,8 @@
                                         <td class="py-3 text-center">
                                             <div class="flex items-center justify-center">
                                                 <input id="score_visiting" name="score_visiting" type="number"
-                                                    class="font-bold text-lg text-center 
-                                            @if ($game->score_visiting > $game->score_local) text-primary @endif
-                                            "
-                                                    value="{{ old('score_visiting', $game->score_visiting) }}">
+                                                    class="font-bold text-lg text-center"
+                                                    value="{{ old('score_visiting') }}">
                                             </div>
                                         </td>
                                         {{-- equipo visitante --}}
@@ -100,9 +94,6 @@
                                             <div class="flex items-center justify-end">
                                                 <label for="id_teams_visiting"></label> <select id="id_teams_visiting"
                                                     name="id_teams_visiting">
-                                                    <option selected hidden
-                                                        value="{{ old('id_teams_visiting', $game->id_teams_visiting->id) }}">
-                                                        {{ $game->id_teams_visiting->name }}</option>
                                                     @foreach ($league->teams as $team)
                                                         <option value="{{ $team->id }}">{{ $team->name }}</option>
                                                     @endforeach
@@ -117,9 +108,6 @@
                                             <div class="flex items-center justify-end">
                                                 <label for="id_referees"></label> <select id="id_referees"
                                                     name="id_referees">
-                                                    <option selected hidden
-                                                        value="{{ old('id_referees', $game->id_referees) }}">
-                                                        {{ $referee->first_name }} {{ $referee->last_name }}</option>
                                                     @foreach ($referees as $referee)
                                                         <option value="{{ $referee->id }}">{{ $referee->first_name }}
                                                             {{ $referee->last_name }}</option>
@@ -134,7 +122,7 @@
                                         <td class="py-3 text-center">
                                             <div class="flex items-center justify-center">
                                                 <input id="duration" name="duration" type="time"
-                                                    value="{{ old('duration', $game->duration) }}">
+                                                    value="{{ old('duration') }}">
                                             </div>
                                         </td>
                                         {{-- estado --}}
@@ -152,23 +140,6 @@
                                                     @error('id_referees')
                                                         <small class="text-primary text-lg pl-1">*</small>
                                                     @enderror
-                                                    <option selected hidden value="{{ $game->state }}"><?php
-                                                    switch ($game->state) {
-                                                        case 0:
-                                                            echo 'En juego';
-                                                            break;
-                                                        case 1:
-                                                            echo 'Finalizado';
-                                                            break;
-                                                        case 2:
-                                                            echo 'Aplazado';
-                                                            break;
-                                                        case 3:
-                                                            echo 'Suspendido';
-                                                            break;
-                                                    }
-                                                    ?>
-                                                    </option>
                                                     <option class="py-1 px-3 rounded-full text-xs text-center w-2/3"
                                                         value="0">
                                                         En juego</option>

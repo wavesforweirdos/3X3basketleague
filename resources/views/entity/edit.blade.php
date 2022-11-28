@@ -2,7 +2,7 @@
 
 @section('title', 'Editar entidad | 3KLeague')
 @section('navigation')
-    @include('layouts.nav-entity')
+    @include('layouts.nav-simply1')
 @endsection
 
 @section('banner')
