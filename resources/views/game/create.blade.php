@@ -18,7 +18,6 @@
 @section('content')
 
     <!-- ===== Game Info -->
-    @extends('layouts.basic')
     <section id="infoGame" class="overflow-x-auto pt-20 pb-10">
         <div class="container">
             <div class=" bg-white flex items-center justify-center overflow-x-scroll lg:overflow-hidden p-4">
