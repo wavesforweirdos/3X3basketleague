@@ -31,20 +31,20 @@ Route::get('/', [EntityController::class, 'index'])->name('home');
 Route::resource('entity', EntityController::class)->names('entity');
 
 // --------- Rutas de League ----------
-Route::resource('league', LeagueController::class)->names('league');
-Route::get('league/{id}', [LeagueController::class, 'show'])->name('league.show');
+// Solo las rutas que tienen controlador y vista: el resto devuelve 404 en vez de un error 500.
+// El formulario de crear una liga o un partido lleva parámetro y se declara aparte (abajo).
+Route::resource('league', LeagueController::class)->except(['index', 'create'])->names('league');
 Route::get('league/create/{league}', [LeagueController::class, 'create'])->name('league.create');
 
 // --------- Rutas de Team ----------
-Route::resource('team', TeamController::class)->names('team');
-Route::get('league/{league}/team', [TeamController::class, 'show'])->name('team.show');
+Route::resource('team', TeamController::class)->only(['store', 'edit', 'update', 'destroy'])->names('team');
 Route::get('league/{league}/team/create', [TeamController::class, 'create'])->name('team.create');
 
 // --------- Rutas de Player ----------
-Route::resource('player', PlayerController::class)->names('player');
+Route::resource('player', PlayerController::class)->only(['destroy'])->names('player');
 
 // --------- Rutas de Game ----------
-Route::resource('game', GameController::class)->names('game');
+Route::resource('game', GameController::class)->except(['index', 'show', 'create'])->names('game');
 Route::get('game/create/{league}', [GameController::class, 'create'])->name('game.create');
 
 

@@ -24,7 +24,7 @@
                         data-wow-delay=".15s">
                         <div class="w-60 max-w-full px-4 mx-auto pb-8">
                             <a href="/" class="navbar-logo block w-full py-5">
-                                <img src="{{ Vite::asset('resources/images/logo/logo.svg') }}" alt="logo"
+                                <img src="{{ asset('images/logo/logo.svg') }}" alt="logo"
                                     class="w-full" />
                             </a>
                         </div>

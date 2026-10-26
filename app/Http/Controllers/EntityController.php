@@ -7,6 +7,7 @@ use App\Models\Entity;
 use App\Models\Manager;
 use App\Models\League;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class EntityController extends Controller
 {
@@ -38,8 +39,9 @@ class EntityController extends Controller
         if ($request->hasFile('image')) {
             $destination_path = 'public/images/entities';
             $image = $request->file('image');
-            $image_name = $request['entity_name'] . '_profile.' . $image->extension();
-            $path = $request->file('image')->storeAs($destination_path, strtolower($image_name));
+            // Nombre de fichero derivado del nombre de la entidad, sin barras ni caracteres raros
+            $image_name = Str::slug($request['entity_name']) . '_profile.' . $image->extension();
+            $path = $request->file('image')->storeAs($destination_path, $image_name);
             
             $request['photo'] = $image_name;
         }
@@ -65,8 +67,9 @@ class EntityController extends Controller
         if ($request->hasFile('image')) {
             $destination_path = 'public/images/entities';
             $image = $request->file('image');
-            $image_name = $request['entity_name'] . '_profile.' . $image->extension();
-            $path = $request->file('image')->storeAs($destination_path, strtolower($image_name));
+            // Nombre de fichero derivado del nombre de la entidad, sin barras ni caracteres raros
+            $image_name = Str::slug($request['entity_name']) . '_profile.' . $image->extension();
+            $path = $request->file('image')->storeAs($destination_path, $image_name);
             
             $request['photo'] = $image_name;
         }

@@ -24,15 +24,19 @@ class GameFactory extends Factory
 
     public function definition()
     {
-        $time  = date("Y-m-d H:m:s", mt_rand(strtotime("2000-01-01 10:00:00"), strtotime(date(now())))); //fecha aleatoria entre un intervalo
+        // Partidos de las últimas seis semanas
+        $time  = date("Y-m-d H:i:s", mt_rand(strtotime("-6 weeks"), time()));
+        // Local y visitante nunca son el mismo equipo
+        $local = Team::all()->random();
+        $visiting = Team::where('id', '!=', $local->id)->get()->random();
         return [
             'league_id' => League::all()->random()->id,
-            'id_teams_local' => Team::all()->random()->id,
-            'id_teams_visiting' => Team::all()->random()->id,
+            'id_teams_local' => $local->id,
+            'id_teams_visiting' => $visiting->id,
             'score_local' => fake()->numberBetween(0,21),
             'score_visiting' => fake()->numberBetween(0,21),
             'start_time' => $time,
-            'duration' => fake()->time('00:0m:s', '10 minutes'),
+            'duration' => sprintf('00:%02d:%02d', fake()->numberBetween(5, 10), fake()->numberBetween(0, 59)), // mm:ss de un partido 3x3 (H:i:s: antes se usaba la m del mes)
             'id_referees' => Referee::all()->random()->id,
             'state' => fake()->numberBetween(0,3),
         ];

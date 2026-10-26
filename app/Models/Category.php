@@ -25,8 +25,10 @@ class Category extends Model
             get: function ($value) {
                 return ucfirst($value);
             },
+            // Se guarda en minúsculas, tal y como está declarado el enum (así funciona
+            // igual en MySQL, que no distingue mayúsculas, y en SQLite).
             set: function ($value) {
-                return ucfirst($value);
+                return strtolower($value);
             },
         );
     }

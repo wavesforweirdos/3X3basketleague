@@ -25,11 +25,11 @@
                             <img src="{{ $entity->photo }}" alt="image"
                                 class="object-cover object-center h-auto rounded-full" />
                         @else
-                            <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}" alt="image"
+                            <img src="{{ asset('storage/images/entities/' . $entity->photo) }}" alt="image"
                                 class="object-cover object-center h-auto rounded-full" />
                         @endif
                     @else
-                        <img src="https://149368894.v2.pressablecdn.com/wp-content/uploads/2019/09/iStock-1018999828.jpg"
+                        <img src="{{ asset('images/placeholder.svg') }}"
                             alt="image" class="object-cover object-center h-auto rounded-full" />
                     @endif
 
@@ -141,11 +141,7 @@
                         <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
                             <div class="mb-8 overflow-hidden rounded">
                                 <a href="{{ route('league.show', $league) }}" class="block">
-                                    <img src="
-                                    <?php
-                                    $league->logo ? ($src = $league->logo) : ($src = fake()->imageUrl($width = 250, $height = 250, $league->name));
-                                    echo $src;
-                                    ?>" alt="image"
+                                    <img src="{{ $league->logo ?: asset('images/placeholder.svg') }}" alt="image"
                                         class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
                                 </a>
                             </div>

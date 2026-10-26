@@ -33,10 +33,10 @@ class StoreEntity extends FormRequest
             'entity_name' => 'required',
             'foundation_year'  => 'required|digits:4|integer|min:1900',
             'entity_phone'  => 'required|digits:9',
-            'email'  => 'required|email:rfc,dns',
+            'email'  => 'required|email:rfc',
             'country'  => 'required',
             'city'  => 'required',
-            'photo' => 'mimes:csv,txt,xlx,xls,pdf|max:2048'
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ];
     }
 }

@@ -27,6 +27,7 @@ class StoreLeague extends FormRequest
     {
         return [
             'name' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'min_age'  => 'required',
             'max_players' => 'required',
             'registration_day' => 'required|date|before:start_day',

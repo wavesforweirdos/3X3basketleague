@@ -12,6 +12,7 @@ use App\Models\Manager;
 use App\Models\Team;
 use Dotenv\Parser\Lexer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use PhpParser\Node\Stmt\Return_;
 
 class LeagueController extends Controller
@@ -81,8 +82,8 @@ class LeagueController extends Controller
         if ($request->hasFile('image')) {
             $destination_path = 'public/images/leagues';
             $image = $request->file('image');
-            $image_name = $request['name'] . '_profile.' . $image->extension();
-            $path = $request->file('image')->storeAs($destination_path, strtolower($image_name));
+            $image_name = Str::slug($request['name']) . '_profile.' . $image->extension();
+            $path = $request->file('image')->storeAs($destination_path, $image_name);
 
             $request['photo'] = $image_name;
         }

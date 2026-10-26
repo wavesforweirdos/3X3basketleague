@@ -1,6 +1,6 @@
 <!-- ====== Hero Section Start -->
 <div id="home" class="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px]bg-contain"
-    style="background-image: url('{{ Vite::asset('resources/images/hero/hero-image.png') }}'); background-position:top; background-repeat:no-repeat; background-size: cover;">
+    style="background-image: url('{{ asset('images/hero/hero-image.png') }}'); background-position:top; background-repeat:no-repeat; background-size: cover;">
     <div class="container">
         <div class="-mx-4 flex flex-wrap items-center">
             <div class="w-full px-4">
@@ -26,7 +26,7 @@
             <div class="w-full px-4">
                 <div class="wow fadeInUp relative z-10 mx-auto max-w-[845px]" data-wow-delay=".25s">
                     <div class="mt-16">
-                        <img src="{{ Vite::asset('resources/images/hero/hero-image-black.png') }}" alt="hero"
+                        <img src="{{ asset('images/hero/hero-image-black.png') }}" alt="hero"
                             class="bg-blend-screen mx-auto max-w-full rounded-t-xl rounded-tr-xl" />
                     </div>
                     <div class="absolute bottom-0 -left-9 z-[-1]">
