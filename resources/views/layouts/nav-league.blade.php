@@ -4,9 +4,9 @@
             <div class="relative -mx-4 flex items-center justify-between">
                 <div class="w-60 max-w-full px-4">
                     <a href="{{ route('entity.index') }}" class="navbar-logo block w-full py-5">
-                        <img src="{{ Vite::asset('resources/images/logo/logo-white.svg') }}" alt="logo"
+                        <img src="{{ asset('images/logo/logo-white.svg') }}" alt="logo"
                             class="header-logo-white w-full" />
-                        <img src="{{ Vite::asset('resources/images/logo/logo.svg') }}" alt="logo"
+                        <img src="{{ asset('images/logo/logo.svg') }}" alt="logo"
                             class="header-logo w-full" style="display:none" />
                     </a>
                 </div>

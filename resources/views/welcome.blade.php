@@ -156,7 +156,7 @@
                             </div>
                             <div class="text-center">
                                 <div class="relative z-10 inline-block">
-                                    <img src="{{ Vite::asset('resources/images/about/about-image.svg') }}" alt="image"
+                                    <img src="{{ asset('images/about/about-image.svg') }}" alt="image"
                                         class="mx-auto lg:ml-auto" />
                                 </div>
                             </div>
@@ -190,11 +190,11 @@
                                     @if (str_contains($entity->photo, 'https://'))
                                         <img src="{{ $entity->photo }}" alt="image" class="w-full rounded-full" />
                                     @else
-                                        <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}"
+                                        <img src="{{ asset('storage/images/entities/' . $entity->photo) }}"
                                             alt="image" class="w-full rounded-full" />
                                     @endif
                                 @else
-                                    <img src="https://149368894.v2.pressablecdn.com/wp-content/uploads/2019/09/iStock-1018999828.jpg"
+                                    <img src="{{ asset('images/placeholder.svg') }}"
                                         alt="image" class="w-full rounded-full shadow" />
                                 @endif
 
@@ -239,7 +239,7 @@
                 <div class="w-full px-4 sm:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp mb-10" data-wow-delay=".1s">
                         <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
-                            <img src="{{ Vite::asset('resources/images/team/team-01.png') }}" alt="image"
+                            <img src="{{ asset('images/team/team-01.png') }}" alt="image"
                                 class="w-full rounded-full" />
                             <span class="absolute top-0 left-0 z-[-1]">
                                 @php
@@ -280,7 +280,7 @@
                 <div class="w-full px-4 sm:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp mb-10" data-wow-delay=".1s">
                         <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
-                            <img src="{{ Vite::asset('resources/images/team/team-01.png') }}" alt="image"
+                            <img src="{{ asset('images/team/team-01.png') }}" alt="image"
                                 class="w-full rounded-full" />
                             <span class="absolute top-0 left-0 z-[-1]">
                                 @php
@@ -321,7 +321,7 @@
                 <div class="w-full px-4 sm:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp mb-10" data-wow-delay=".1s">
                         <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
-                            <img src="{{ Vite::asset('resources/images/team/team-01.png') }}" alt="image"
+                            <img src="{{ asset('images/team/team-01.png') }}" alt="image"
                                 class="w-full rounded-full" />
                             <span class="absolute top-0 left-0 z-[-1]">
                                 @php
@@ -362,7 +362,7 @@
                 <div class="w-full px-4 sm:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp mb-10" data-wow-delay=".1s">
                         <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
-                            <img src="{{ Vite::asset('resources/images/team/team-01.png') }}" alt="image"
+                            <img src="{{ asset('images/team/team-01.png') }}" alt="image"
                                 class="w-full rounded-full" />
                             <span class="absolute top-0 left-0 z-[-1]">
                                 @php

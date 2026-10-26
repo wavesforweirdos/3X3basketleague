@@ -8,7 +8,7 @@
     <title>
         @yield('title')
     </title>
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/animate.css') }}" />
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/tailwind-2.css') }}" />
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/tailwind.css') }}" />

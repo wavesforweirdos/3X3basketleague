@@ -261,8 +261,7 @@
                                 <div class="text-base text-body-color">
                                     <ul class="text-base text-body-color">
                                         @foreach ($team->players as $player)
-                                            <div title="Perfil de {{ $player->first_name }}"
-                                                href="{{ route('player.show', $player) }}">
+                                            <div>
                                                 <li>{{ $player->first_name }} {{ $player->last_name }}</li>
                                             </div>
                                         @endforeach

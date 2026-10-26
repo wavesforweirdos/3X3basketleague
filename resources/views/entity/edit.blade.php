@@ -94,7 +94,7 @@
                                                         <img src="{{ $entity->photo }}" alt="image"
                                                             class="w-20 h-20 rounded-full shadow" />
                                                     @else
-                                                        <img src="{{ Vite::asset('\public\storage\images\entities/' . $entity->photo) }}"
+                                                        <img src="{{ asset('storage/images/entities/' . $entity->photo) }}"
                                                             alt="image" class="w-20 h-20 rounded-full shadow" />
                                                     @endif
                                                 @else
