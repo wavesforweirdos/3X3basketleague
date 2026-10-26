@@ -1,66 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 3X3 League
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> A web app to manage a 3x3 basketball league: entities, leagues, teams, players and games. Built in 2022 with Laravel and Blade as a Full Stack PHP bootcamp project (IT Academy); in 2026 it was tidied up and moved from Laravel 9 to Laravel 13 to run on current PHP.
 
-## About Laravel
+[![CI](https://github.com/wavesforweirdos/3X3basketleague/actions/workflows/ci.yml/badge.svg)](https://github.com/wavesforweirdos/3X3basketleague/actions/workflows/ci.yml)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![The landing page](docs/home.jpg)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Entities** (clubs or federations) with a contact person, photo and the leagues they run
+- **Leagues** with their rules (minimum age, maximum players, allowed team genders), registration and play dates, and a court
+- **Teams** by category and gender, each with its squad of players
+- **Games** with teams, referee, score, duration and status (scheduled, in play, finished, postponed), listed newest first with pagination
+- Create, edit and delete for entities, leagues, teams and games, with validation; pictures are checked (images only, up to 2 MB)
+- Landing page and Spanish interface built on the TailGrids Tailwind template; responsive
+- Demo data with a seeder: one entity and league, eight teams with their players and fifty games
 
-## Learning Laravel
+| League | Teams |
+|---|---|
+| ![A league](docs/league.jpg) | ![Teams and squads](docs/teams.jpg) |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+| Games | On a phone |
+|---|---|
+| ![Games history](docs/games.jpg) | ![A league on a phone](docs/league-mobile.jpg) |
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Technologies
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| | |
+|---|---|
+| **Back end** | PHP 8.3+, [Laravel 13](https://laravel.com/), Eloquent, MySQL (SQLite for the tests) |
+| **Front end** | Blade views and components, [Tailwind CSS](https://tailwindcss.com/), Alpine.js, [Vite](https://vite.dev/) |
+| **Quality** | PHPUnit 12 (12 tests), GitHub Actions |
 
-## Laravel Sponsors
+## Getting started
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+You need PHP 8.3+ (it runs on 8.5), Composer, Node 20+ and a MySQL database (or SQLite).
 
-### Premium Partners
+```sh
+git clone https://github.com/wavesforweirdos/3X3basketleague
+cd 3X3basketleague
+composer install
+npm install
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+cp .env.example .env
+php artisan key:generate
+```
 
-## Contributing
+Set your database in `.env` (`DB_*`). For SQLite, create an empty `database/database.sqlite` and use `DB_CONNECTION=sqlite` with the full path in `DB_DATABASE`. Then:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```sh
+php artisan migrate --seed   # tables and demo data
+php artisan storage:link     # public URL for uploaded pictures
+npm run build                # CSS and JS (or `npm run dev` while developing)
+php artisan serve            # http://localhost:8000
+```
 
-## Code of Conduct
+### Tests
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```sh
+vendor/bin/phpunit
+```
 
-## Security Vulnerabilities
+`phpunit.xml` runs on an in-memory SQLite database, so no MySQL is needed. The tests need the Vite build (`npm run build`) because the views request their CSS and JS through `Vite::asset()`; images are plain files in `public/images`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Project layout
 
-## License
+```
+app/Http/Controllers/   Entity, League, Team, Game, Player and User controllers
+app/Http/Requests/      validation of the forms
+app/Models/             Eloquent models (names are stored lowercase and shown capitalised)
+database/               migrations, factories and the demo seeder
+bootstrap/app.php        routing and middleware setup (Laravel 11+ style)
+resources/views/        Blade views, layouts and components
+routes/web.php          the routes
+tests/Feature/          page and upload tests
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Known limits
+
+This is an unfinished learning project:
+
+- **There is no authentication.** Anyone who can reach the app can create, edit and delete everything. Don't expose it to the public internet as it is: the sign-in and sign-up pages are only mock-ups
+- The index pages for leagues, teams, games and players, and the player profile, were never built; their routes are disabled, so they answer 404 or 405 instead of an error
+- The interface is in Spanish only
+
+## Deployment
+
+It needs a PHP host with a database, so it can't run on static hosting like GitHub Pages. Build the assets (`npm run build`), set the production `.env` (`APP_ENV=production`, `APP_DEBUG=false`, `APP_URL` and the database) and run `php artisan migrate --force` and `php artisan storage:link`.

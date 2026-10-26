@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Imagen no disponible">
+  <circle cx="100" cy="100" r="96" fill="#f59a37"/>
+  <g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".9">
+    <circle cx="100" cy="100" r="60"/>
+    <path d="M100 40v120M40 100h120"/>
+    <path d="M58 58c28 28 28 56 0 84M142 58c-28 28-28 56 0 84"/>
+  </g>
+</svg>
