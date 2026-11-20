@@ -28,13 +28,13 @@
 
 | | |
 |---|---|
-| **Back end** | PHP 8.3+, [Laravel 13](https://laravel.com/), Eloquent, MySQL (SQLite for the tests) |
+| **Back end** | PHP 8.6+, [Laravel 13](https://laravel.com/), Eloquent, MySQL (SQLite for the tests) |
 | **Front end** | Blade views and components, [Tailwind CSS](https://tailwindcss.com/), Alpine.js, [Vite](https://vite.dev/) |
 | **Quality** | PHPUnit 12 (12 tests), GitHub Actions |
 
 ## Getting started
 
-You need PHP 8.3+ (it runs on 8.5), Composer, Node 20+ and a MySQL database (or SQLite).
+You need PHP 8.6+, Composer, Node 20+ and a MySQL database (or SQLite).
 
 ```sh
 git clone https://github.com/wavesforweirdos/3X3basketleague
